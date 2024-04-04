@@ -49,6 +49,7 @@ script = ExtResource("1_rat86")
 target = NodePath("../player")
 
 [node name="Camera" type="Camera3D" parent="Camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09402, 0)
 fov = 108.985
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
