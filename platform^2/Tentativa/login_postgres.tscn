@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co0naa6mum68v"]
+
+[ext_resource type="Script" path="res://Tentativa/fazer_login.gd" id="1_mbkl4"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mbkl4")
