@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://u6xodbceorvq"]
 
-[ext_resource type="Script" path="res://view.gd" id="1_rat86"]
-[ext_resource type="Script" path="res://player.gd" id="1_suo05"]
-[ext_resource type="Texture2D" uid="uid://7phtavocfib4" path="res://anime_skybox.jpg" id="1_tmfhi"]
+[ext_resource type="Script" path="res://Scripts/view.gd" id="1_rat86"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_suo05"]
+[ext_resource type="Texture2D" uid="uid://7phtavocfib4" path="res://Imagens/anime_skybox.jpg" id="1_tmfhi"]
 [ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://Models/actors/models/gobot/model/gobot.glb" id="3_rrc64"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rj5kg"]

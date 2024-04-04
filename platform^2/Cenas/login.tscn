@@ -1,0 +1,157 @@
+[gd_scene load_steps=9 format=3 uid="uid://cebnpymxlg4mi"]
+
+[ext_resource type="Script" path="res://Scripts/login.gd" id="1_bcylq"]
+[ext_resource type="Texture2D" uid="uid://cgerdtbgwf56c" path="res://Imagens/fundo_menu.jpg" id="1_vhl16"]
+[ext_resource type="Texture2D" uid="uid://c67ino6ac2mo0" path="res://Imagens/login_imagem.png" id="2_dxlbk"]
+[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://default_buttons.tres" id="2_lxxn8"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="3_3cisf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40w3s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_si4eq"]
+bg_color = Color(0.517647, 0.317647, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ke2y"]
+bg_color = Color(0.517647, 0.247059, 1, 0.501961)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bcylq")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_vhl16")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 188.0
+offset_right = 401.0
+offset_bottom = 267.0
+texture = ExtResource("2_dxlbk")
+
+[node name="entrar_btn" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+offset_left = 188.0
+offset_top = 430.0
+offset_right = 981.0
+offset_bottom = 462.0
+theme = ExtResource("2_lxxn8")
+text = "Login"
+
+[node name="voltar_btn" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 188.0
+offset_top = 480.0
+offset_right = 981.0
+offset_bottom = 512.0
+theme = ExtResource("2_lxxn8")
+text = "Back To Menu"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 275.0
+offset_right = -557.0
+offset_bottom = -249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_40w3s")
+
+[node name="register_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("2_lxxn8")
+text = "Username: "
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_40w3s")
+
+[node name="register_btn2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("2_lxxn8")
+text = "Password: "
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.497
+anchor_right = 0.5
+anchor_bottom = 0.497
+offset_left = -419.0
+offset_top = -21.056
+offset_right = 733.0
+offset_bottom = 58.944
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(500, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_si4eq")
+
+[node name="input_password" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3cisf")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ke2y")
+alignment = 1
+caret_blink = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(500, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_si4eq")
+
+[node name="input_username" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3cisf")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ke2y")
+alignment = 1
+
+[connection signal="pressed" from="entrar_btn" to="." method="_on_entrar_btn_pressed"]
+[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]

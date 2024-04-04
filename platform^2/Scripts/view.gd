@@ -4,7 +4,7 @@ extends Node3D
 @export var target: CharacterBody3D
 
 @export_group("Zoom")
-@export var zoom_minimum = 16
+@export var zoom_minimum = 10
 @export var zoom_maximum = 4
 @export var zoom_speed = 10
 
@@ -14,7 +14,7 @@ extends Node3D
 @export var max_rotation_x=-10
 
 var camera_rotation:Vector3
-var zoom = 6
+var zoom = 4
 
 @onready var camera = $Camera
 

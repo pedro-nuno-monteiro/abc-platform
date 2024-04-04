@@ -1,0 +1,202 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsypn0jyy6d5x"]
+
+[ext_resource type="Script" path="res://Scripts/register.gd" id="1_f5te8"]
+[ext_resource type="Texture2D" uid="uid://cgerdtbgwf56c" path="res://Imagens/fundo_menu.jpg" id="1_oq8u4"]
+[ext_resource type="Texture2D" uid="uid://bvij10dskob25" path="res://Imagens/registar_imagem.png" id="2_nkh68"]
+[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://default_buttons.tres" id="3_8tk8q"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="4_0jam0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xjkm7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrhfy"]
+bg_color = Color(0.517647, 0.317647, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iklif"]
+bg_color = Color(0.517647, 0.317647, 1, 1)
+
+[node name="Register" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5te8")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_oq8u4")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 174.0
+offset_top = 135.0
+offset_right = 431.0
+offset_bottom = 213.0
+texture = ExtResource("2_nkh68")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -273.0
+offset_right = -273.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xjkm7")
+
+[node name="register_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("3_8tk8q")
+text = "Username: "
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xjkm7")
+
+[node name="login_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8tk8q")
+text = "Password:
+"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xjkm7")
+
+[node name="exit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8tk8q")
+text = "Idade: "
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_xjkm7")
+
+[node name="exit_btn2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8tk8q")
+text = "Sexo: "
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.497
+anchor_right = 0.5
+anchor_bottom = 0.497
+offset_left = -419.0
+offset_top = -78.056
+offset_right = 733.0
+offset_bottom = 150.944
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(500, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rrhfy")
+
+[node name="input_password" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0jam0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_iklif")
+alignment = 1
+caret_blink = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(500, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rrhfy")
+
+[node name="input_username" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0jam0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_iklif")
+alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(500, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rrhfy")
+
+[node name="input_idade" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0jam0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_iklif")
+alignment = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(500, 38)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_rrhfy")
+
+[node name="input_sexo" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_0jam0")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_iklif")
+alignment = 1
+
+[node name="register_btn" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 178.0
+offset_top = 452.0
+offset_right = 981.0
+offset_bottom = 484.0
+theme = ExtResource("3_8tk8q")
+text = "Register"
+
+[node name="voltar_btn" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 0
+offset_left = 178.0
+offset_top = 498.0
+offset_right = 981.0
+offset_bottom = 530.0
+theme = ExtResource("3_8tk8q")
+text = "Voltar Para Menu"
+
+[connection signal="pressed" from="register_btn" to="." method="_on_register_btn_pressed"]
+[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]
+[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_2_pressed"]
