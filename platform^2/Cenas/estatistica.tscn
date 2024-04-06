@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d050imsykboej" path="res://Imagens/statistics.png" id="3_d4w76"]
 
 [node name="estatistica" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_e1idg")
 
 [node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_wo0we")

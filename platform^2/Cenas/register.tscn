@@ -20,6 +20,7 @@ border_color = Color(0, 0, 0, 1)
 bg_color = Color(0.517647, 0.317647, 1, 1)
 
 [node name="Register" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

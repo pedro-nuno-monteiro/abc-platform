@@ -15,7 +15,7 @@ func _on_exit_btn_pressed():
 	
 
 func _on_level_1_btn_pressed():
-	get_tree().change_scene_to_file("res://Cenas/world.tscn")
+	get_tree().change_scene_to_file("res://Cenas/nivel_1.tscn")
 	
 
 func _on_level_2_btn_pressed():

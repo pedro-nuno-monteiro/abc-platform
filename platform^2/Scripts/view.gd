@@ -14,20 +14,18 @@ extends Node3D
 @export var max_rotation_x=-10
 
 var camera_rotation:Vector3
-var zoom = 4
+var camera_translation: Vector3
+var zoom = 4.5
 
 @onready var camera = $Camera
 
 func _ready():
-	
-	camera_rotation = rotation_degrees # Initial rotation
-	
-	pass
+	camera_rotation = Vector3(-30, 0, 0)
+	#camera_rotation = rotation_degrees # Initial rotation
 
 func _physics_process(delta):
 	
-	# Set position and rotation to targets
-	
+	# Set position and rotation to targets	
 	self.position = self.position.lerp(target.position, delta * 4)
 	rotation_degrees = rotation_degrees.lerp(camera_rotation, delta * 6)
 	

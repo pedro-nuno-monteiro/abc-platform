@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpymta3kh8qnc"]
+
+[ext_resource type="PackedScene" uid="uid://jns54b4hh8bx" path="res://Models/assets/moeda.glb" id="1_1iqkc"]
+[ext_resource type="Script" path="res://Scripts/coin.gd" id="1_avb6w"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g8f85"]
+height = 0.15
+radius = 0.45
+
+[node name="coin" type="Area3D"]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24714, 2.98387, -1.85036)
+script = ExtResource("1_avb6w")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.492028, 0)
+shape = SubResource("CylinderShape3D_g8f85")
+
+[node name="moeda" parent="." instance=ExtResource("1_1iqkc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0125113, 0)

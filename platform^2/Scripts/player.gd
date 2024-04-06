@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 200.0
-const JUMP_VELOCITY = 10.0
+const SPEED = 270.0
+const JUMP_VELOCITY = 14.0
 @onready var animator = get_node("gobot/AnimationPlayer") as AnimationPlayer
 var gravity = 0
 
@@ -10,7 +10,11 @@ var gravity = 0
 var movement_velocity : Vector3
 var rotation_direction : float
 
-
+func _ready():
+	Globals.coins = 0
+	Globals.seconds = 0
+	Globals.minutes = 0
+	
 func _physics_process(delta):
 	
 	handle_input(delta)

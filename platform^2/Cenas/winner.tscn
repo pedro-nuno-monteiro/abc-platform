@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4ccfi1mbqx10"]
+
+[ext_resource type="Script" path="res://Scripts/pontuation.gd" id="1_nqydd"]
+[ext_resource type="Texture2D" uid="uid://cgerdtbgwf56c" path="res://Imagens/fundo_menu.jpg" id="1_w4qbm"]
+[ext_resource type="Texture2D" uid="uid://b2xqc3163soww" path="res://Imagens/moeda_sem_fundo_1.png" id="2_1b06n"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="3_prj0e"]
+[ext_resource type="Texture2D" uid="uid://yq4ev3xivfip" path="res://Imagens/results.png" id="4_jgkw8"]
+[ext_resource type="Texture2D" uid="uid://b46b1xp1s6xed" path="res://Imagens/congratulations.png" id="4_vg1ls"]
+[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://default_buttons.tres" id="5_8hdmx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1mhw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vkmc6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ymx5"]
+
+[node name="winner" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nqydd")
+
+[node name="bg" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_w4qbm")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 599.0
+offset_top = 158.0
+offset_right = 933.0
+offset_bottom = 510.0
+color = Color(0.552941, 0.552941, 0.552941, 0.419608)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 4.0
+offset_right = 1043.0
+offset_bottom = 647.0
+
+[node name="options_menu" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/options_menu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_vg1ls")
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/options_menu"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_d1mhw")
+
+[node name="play_again_btn" type="Button" parent="HBoxContainer/options_menu"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("5_8hdmx")
+text = "Play Again"
+
+[node name="HSeparator4" type="HSeparator" parent="HBoxContainer/options_menu"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_d1mhw")
+
+[node name="quit_btn" type="Button" parent="HBoxContainer/options_menu"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme = ExtResource("5_8hdmx")
+text = "Quit"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vkmc6")
+
+[node name="results_container" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/results_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_jgkw8")
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/results_container"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_d1mhw")
+
+[node name="coins_container" type="HBoxContainer" parent="HBoxContainer/results_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="coins_icon" type="TextureRect" parent="HBoxContainer/results_container/coins_container"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+texture = ExtResource("2_1b06n")
+expand_mode = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/results_container/coins_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_0ymx5")
+
+[node name="coins_x" type="Label" parent="HBoxContainer/results_container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_prj0e")
+theme_override_font_sizes/font_size = 59
+text = "x"
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer/results_container/coins_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_0ymx5")
+
+[node name="coins_counter" type="Label" parent="HBoxContainer/results_container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_prj0e")
+theme_override_font_sizes/font_size = 52
+text = "000"
+
+[node name="HSeparator4" type="HSeparator" parent="HBoxContainer/results_container"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_d1mhw")
+
+[node name="timer_container" type="HBoxContainer" parent="HBoxContainer/results_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="timer_label" type="Label" parent="HBoxContainer/results_container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_prj0e")
+theme_override_font_sizes/font_size = 50
+text = "Time:"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/results_container/timer_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_0ymx5")
+
+[node name="timer_counter" type="Label" parent="HBoxContainer/results_container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_prj0e")
+theme_override_font_sizes/font_size = 47
+text = "00:00"
+
+[connection signal="pressed" from="HBoxContainer/options_menu/play_again_btn" to="." method="_on_play_again_btn_pressed"]
+[connection signal="pressed" from="HBoxContainer/options_menu/quit_btn" to="." method="_on_quit_btn_pressed"]

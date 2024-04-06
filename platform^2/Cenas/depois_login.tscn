@@ -8,6 +8,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdj68"]
 
 [node name="Control" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,9 +86,7 @@ layout_mode = 2
 theme = ExtResource("3_vk07p")
 text = "Exit"
 
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/play_btn" to="." method="_on_register_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/see_stats_btn" to="." method="_on_see_stats_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/exit_btn2" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/exit_btn2" to="." method="_on_exit_btn_2_pressed"]

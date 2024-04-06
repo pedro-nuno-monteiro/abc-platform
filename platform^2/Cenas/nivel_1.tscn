@@ -1,0 +1,303 @@
+[gd_scene load_steps=27 format=3 uid="uid://8nj5w2mewt06"]
+
+[ext_resource type="Script" path="res://Scripts/view.gd" id="1_832at"]
+[ext_resource type="Texture2D" uid="uid://dx2il5bs1m4in" path="res://Imagens/tentativa2.jpg" id="2_46w21"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="3_2w1lw"]
+[ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://Models/actors/models/gobot/model/gobot.glb" id="4_ooiht"]
+[ext_resource type="PackedScene" uid="uid://bxv8fqt207sdl" path="res://Cenas/terreno_modificado.tscn" id="5_cnoby"]
+[ext_resource type="PackedScene" uid="uid://6eltqbvh52f6" path="res://Models/assets/buttonRound.glb" id="6_5j1n8"]
+[ext_resource type="PackedScene" uid="uid://bpymta3kh8qnc" path="res://Cenas/coin.tscn" id="7_8hc3j"]
+[ext_resource type="PackedScene" uid="uid://b74qyp7yb5on8" path="res://Cenas/terreno_roxo.tscn" id="7_u06m2"]
+[ext_resource type="Script" path="res://Scripts/hud_manager.gd" id="8_5ejdg"]
+[ext_resource type="PackedScene" uid="uid://dmsg1w56u4ygr" path="res://Cenas/pause_menu.tscn" id="8_pvc5q"]
+[ext_resource type="Texture2D" uid="uid://b2xqc3163soww" path="res://Imagens/moeda_sem_fundo_1.png" id="8_th7ws"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="9_ryvnj"]
+[ext_resource type="Script" path="res://Scripts/cai_morre.gd" id="12_wrav8"]
+[ext_resource type="Script" path="res://Scripts/chega_ganha.gd" id="14_inr14"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ceymi"]
+panorama = ExtResource("2_46w21")
+
+[sub_resource type="Sky" id="Sky_ygyi3"]
+sky_material = SubResource("PanoramaSkyMaterial_ceymi")
+
+[sub_resource type="Environment" id="Environment_xgv57"]
+background_mode = 2
+sky = SubResource("Sky_ygyi3")
+sdfgi_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bwlx3"]
+height = 1.5348
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqk3l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aeybk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_237p0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7n1jc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xy7vb"]
+
+[sub_resource type="Theme" id="Theme_l0dg2"]
+Button/styles/focus = SubResource("StyleBoxEmpty_aeybk")
+Button/styles/hover = SubResource("StyleBoxEmpty_237p0")
+Button/styles/normal = SubResource("StyleBoxEmpty_7n1jc")
+Button/styles/pressed = SubResource("StyleBoxEmpty_xy7vb")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyrp0"]
+size = Vector3(39.9011, 1, 115.578)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7155"]
+size = Vector3(4.16257, 1, 1.44678)
+
+[node name="Node3D" type="Node3D"]
+process_mode = 3
+
+[node name="Camera_pivot" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_832at")
+target = NodePath("../player")
+
+[node name="Camera" type="Camera3D" parent="Camera_pivot"]
+fov = 108.985
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xgv57")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225515, 0.594105, -0.336922)
+shadow_enabled = true
+
+[node name="player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341057, 3, 0)
+script = ExtResource("3_2w1lw")
+view = NodePath("../Camera_pivot")
+
+[node name="gobot" parent="player" instance=ExtResource("4_ooiht")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="player"]
+transform = Transform3D(-0.00982612, 0, 0.999952, 0, 1, 0, -0.999952, 0, -0.00982612, 0, 0.66353, 0)
+shape = SubResource("CapsuleShape3D_bwlx3")
+
+[node name="Pasta_Terrenos" type="Node3D" parent="."]
+
+[node name="terreno_1" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 0.484149, 0, -0.323155)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_1" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_2" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -4.00254, 0, -7.89382)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_2" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_3" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -8.89647, 0, -15.7277)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_3" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_4" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 1.67865, 0, -15.7277)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_4" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_5" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -3.76638, 0, -24.9474)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_5" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_6" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 1.53637, 0, -33.6901)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_6" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_7" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 1.53637, 0, -43.7985)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_7" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_8" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 7.18096, 0, -52.337)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_8" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_9" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 7.07106, 0, -62.638)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_9" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_10" parent="Pasta_Terrenos" instance=ExtResource("5_cnoby")]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 1.2035, 0, -70.5806)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_10" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -2.28857, 1.28131, -0.219534)
+
+[node name="terreno_11" parent="Pasta_Terrenos" instance=ExtResource("7_u06m2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.13248, 0, -79.6966)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_11" instance=ExtResource("6_5j1n8")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 1.51795, 1.28131, -0.134185)
+
+[node name="Pasta_Moedas" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633091, -1.30165, -1.58875)
+
+[node name="coin_1" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="coin_2" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13203, 0, -15.0078)
+
+[node name="coin_3" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.35376, 0, -7.06897)
+
+[node name="coin_4" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.35376, 0, -24.6918)
+
+[node name="coin_5" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35667, 0, -33.2086)
+
+[node name="coin_6" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15704, 0, -43.1629)
+
+[node name="coin_7" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.95563, 0, -52.102)
+
+[node name="coin_8" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.61567, 0, -62.1426)
+
+[node name="coin_9" parent="Pasta_Moedas" instance=ExtResource("7_8hc3j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.676532, 0, -70.3416)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+script = ExtResource("8_5ejdg")
+
+[node name="Timer" type="Timer" parent="HUD/Control"]
+process_mode = 1
+autostart = true
+
+[node name="container" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 79.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="coins_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="coins_icon" type="TextureRect" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+texture = ExtResource("8_th7ws")
+expand_mode = 1
+
+[node name="VSeparator" type="VSeparator" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_gqk3l")
+
+[node name="coins_x" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ryvnj")
+theme_override_font_sizes/font_size = 59
+text = "x"
+
+[node name="VSeparator2" type="VSeparator" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_gqk3l")
+
+[node name="coins_counter" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ryvnj")
+theme_override_font_sizes/font_size = 52
+text = "000"
+
+[node name="timer_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="timer_label" type="Label" parent="HUD/Control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ryvnj")
+theme_override_font_sizes/font_size = 50
+text = "Time:"
+
+[node name="VSeparator" type="VSeparator" parent="HUD/Control/container/timer_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_gqk3l")
+
+[node name="timer_counter" type="Label" parent="HUD/Control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ryvnj")
+theme_override_font_sizes/font_size = 47
+text = "00:00"
+
+[node name="pause_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="pause_btn" type="Button" parent="HUD/Control/container/pause_container"]
+custom_minimum_size = Vector2(65, 3)
+layout_mode = 2
+theme = SubResource("Theme_l0dg2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_ryvnj")
+theme_override_font_sizes/font_size = 50
+text = "11"
+
+[node name="pause_menu" parent="." instance=ExtResource("8_pvc5q")]
+
+[node name="cai_morre" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09418, 0, 0)
+script = ExtResource("12_wrav8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cai_morre"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.025, -22.3846, -37.0899)
+shape = SubResource("BoxShape3D_gyrp0")
+
+[node name="chega_ganha" type="Area3D" parent="."]
+script = ExtResource("14_inr14")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chega_ganha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24166, 2.3445, -82.4691)
+shape = SubResource("BoxShape3D_l7155")
+
+[connection signal="body_entered" from="Pasta_Moedas/coin_1" to="Pasta_Moedas/coin_1" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/coin_2" to="Pasta_Moedas/coin_2" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/coin_3" to="Pasta_Moedas/coin_3" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/coin_4" to="Pasta_Moedas/coin_4" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/coin_5" to="Pasta_Moedas/coin_5" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/coin_6" to="Pasta_Moedas/coin_6" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/coin_7" to="Pasta_Moedas/coin_7" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/coin_8" to="Pasta_Moedas/coin_8" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/coin_9" to="Pasta_Moedas/coin_9" method="_on_body_entered"]
+[connection signal="timeout" from="HUD/Control/Timer" to="HUD/Control" method="_on_timer_timeout"]
+[connection signal="pressed" from="HUD/Control/container/pause_container/pause_btn" to="pause_menu" method="_on_pause_btn_pressed"]
+[connection signal="body_entered" from="cai_morre" to="cai_morre" method="_on_body_entered"]
+[connection signal="body_entered" from="chega_ganha" to="chega_ganha" method="_on_body_entered"]

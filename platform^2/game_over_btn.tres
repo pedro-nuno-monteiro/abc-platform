@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cyvunyfgftghf"]
+
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="1_j5hpp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ha8j4"]
+bg_color = Color(0.678431, 0.678431, 0.678431, 0.270588)
+
+[resource]
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_j5hpp")
+Button/styles/normal = SubResource("StyleBoxFlat_ha8j4")

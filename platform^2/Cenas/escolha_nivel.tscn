@@ -16,6 +16,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sewtp"]
 
 [node name="Control" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,12 +26,14 @@ grow_vertical = 2
 script = ExtResource("1_xcwjy")
 
 [node name="bg" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("1_2a0k2")
 expand_mode = 2
 
 [node name="exit_btn" type="Button" parent="."]
+layout_mode = 0
 offset_left = 180.0
 offset_top = 601.0
 offset_right = 970.0
@@ -40,6 +43,7 @@ text = "Back To Menu"
 
 [node name="random_btn" type="Button" parent="."]
 custom_minimum_size = Vector2(0, 40)
+layout_mode = 0
 offset_left = 299.0
 offset_top = 471.0
 offset_right = 825.0
@@ -153,8 +157,8 @@ text = "6
 "
 
 [connection signal="pressed" from="exit_btn" to="." method="_on_exit_btn_pressed"]
-[connection signal="pressed" from="random_btn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="random_btn" to="." method="_on_random_btn_pressed"]
+[connection signal="pressed" from="random_btn" to="." method="_on_exit_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/level_1_btn" to="." method="_on_level_1_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/level_2_btn" to="." method="_on_level_2_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/level_3_btn" to="." method="_on_level_3_btn_pressed"]

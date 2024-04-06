@@ -8,12 +8,12 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_rj5kg"]
 panorama = ExtResource("1_tmfhi")
 
-[sub_resource type="Sky" id="Sky_gqt7c"]
+[sub_resource type="Sky" id="Sky_lhas8"]
 sky_material = SubResource("PanoramaSkyMaterial_rj5kg")
 
 [sub_resource type="Environment" id="Environment_76lib"]
 background_mode = 2
-sky = SubResource("Sky_gqt7c")
+sky = SubResource("Sky_lhas8")
 sdfgi_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qcgs8"]
