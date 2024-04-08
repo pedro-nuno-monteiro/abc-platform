@@ -60,7 +60,7 @@ func apply_gravity(delta):
 	if not is_on_floor(): 
 		gravity += 25 * delta
 		
-func jump(delta):
+func jump(_delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		gravity = -JUMP_VELOCITY
 	if gravity>0 and is_on_floor():

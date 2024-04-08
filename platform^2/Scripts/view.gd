@@ -60,3 +60,4 @@ func _input(event):
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				zoom +=lerpf(zoom, zoom_speed, 0.1)
 			zoom=clamp(zoom, zoom_maximum, zoom_minimum)
+

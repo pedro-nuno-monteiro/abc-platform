@@ -19,14 +19,13 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	coins_counter.text = str(Globals.coins)
 
 func _on_timer_timeout():
 	if Globals.seconds == 59:
-		if Globals.minutes > 0: 
-			Globals.minutes += 1
-			Globals.seconds = 0 
+		Globals.minutes += 1
+		Globals.seconds = 0 
 	Globals.seconds +=1 
 	
 	timer_counter.text = str("%02d" % Globals.minutes) + ":" + str("%02d" % Globals.seconds)

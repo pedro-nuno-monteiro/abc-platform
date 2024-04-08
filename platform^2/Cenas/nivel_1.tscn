@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://8nj5w2mewt06"]
+[gd_scene load_steps=29 format=3 uid="uid://8nj5w2mewt06"]
 
 [ext_resource type="Script" path="res://Scripts/view.gd" id="1_832at"]
 [ext_resource type="Texture2D" uid="uid://dx2il5bs1m4in" path="res://Imagens/tentativa2.jpg" id="2_46w21"]
@@ -14,6 +14,8 @@
 [ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="9_ryvnj"]
 [ext_resource type="Script" path="res://Scripts/cai_morre.gd" id="12_wrav8"]
 [ext_resource type="Script" path="res://Scripts/chega_ganha.gd" id="14_inr14"]
+[ext_resource type="PackedScene" uid="uid://cu063rq7u2di2" path="res://arrow.glb" id="15_aqul4"]
+[ext_resource type="Script" path="res://Scripts/chega_aparece_seta.gd" id="15_jixrb"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ceymi"]
 panorama = ExtResource("2_46w21")
@@ -288,6 +290,16 @@ script = ExtResource("14_inr14")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24166, 2.3445, -82.4691)
 shape = SubResource("BoxShape3D_l7155")
 
+[node name="chega_aparece_seta" type="Area3D" parent="."]
+script = ExtResource("15_jixrb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chega_aparece_seta"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_l7155")
+
+[node name="arrow" parent="chega_aparece_seta" instance=ExtResource("15_aqul4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.661259, 1.38015, -4.21308)
+
 [connection signal="body_entered" from="Pasta_Moedas/coin_1" to="Pasta_Moedas/coin_1" method="_on_body_entered"]
 [connection signal="body_entered" from="Pasta_Moedas/coin_2" to="Pasta_Moedas/coin_2" method="_on_body_entered"]
 [connection signal="body_entered" from="Pasta_Moedas/coin_3" to="Pasta_Moedas/coin_3" method="_on_body_entered"]
@@ -301,3 +313,4 @@ shape = SubResource("BoxShape3D_l7155")
 [connection signal="pressed" from="HUD/Control/container/pause_container/pause_btn" to="pause_menu" method="_on_pause_btn_pressed"]
 [connection signal="body_entered" from="cai_morre" to="cai_morre" method="_on_body_entered"]
 [connection signal="body_entered" from="chega_ganha" to="chega_ganha" method="_on_body_entered"]
+[connection signal="body_entered" from="chega_aparece_seta" to="chega_aparece_seta" method="_on_body_entered"]
