@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cebnpymxlg4mi"]
+[gd_scene load_steps=10 format=3 uid="uid://cebnpymxlg4mi"]
 
 [ext_resource type="Script" path="res://Scripts/login.gd" id="1_bcylq"]
 [ext_resource type="Texture2D" uid="uid://cgerdtbgwf56c" path="res://Imagens/fundo_menu.jpg" id="1_vhl16"]
 [ext_resource type="Texture2D" uid="uid://c67ino6ac2mo0" path="res://Imagens/login_imagem.png" id="2_dxlbk"]
 [ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://default_buttons.tres" id="2_lxxn8"]
 [ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="3_3cisf"]
+[ext_resource type="Theme" uid="uid://b6p8mkol8q1gd" path="res://amarelo.tres" id="6_hovlk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40w3s"]
 
@@ -132,7 +133,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_si4eq")
 
-[node name="input_password" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer"]
+[node name="input_username" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3cisf")
 theme_override_font_sizes/font_size = 25
@@ -147,12 +148,25 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_si4eq")
 
-[node name="input_username" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer2"]
+[node name="input_password" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_3cisf")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_3ke2y")
 alignment = 1
 
+[node name="password_username_wrong" type="Button" parent="."]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 391.0
+offset_right = 981.0
+offset_bottom = 422.0
+theme = ExtResource("6_hovlk")
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "Password or Username Wrong"
+
 [connection signal="pressed" from="entrar_btn" to="." method="_on_entrar_btn_pressed"]
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]
+[connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer/input_username" to="." method="_on_input_username_text_changed"]
+[connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer2/input_password" to="." method="_on_input_password_text_changed"]

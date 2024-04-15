@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgerdtbgwf56c"
-path.s3tc="res://.godot/imported/fundo_menu.jpg-2e271b39cd9cdeacad4ceed58827d218.s3tc.ctex"
+uid="uid://bum848tuipph1"
+path.s3tc="res://.godot/imported/sera.jpeg-94d30139a4504cdb4cb99a3ea4233226.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Imagens/fundo_menu.jpg"
-dest_files=["res://.godot/imported/fundo_menu.jpg-2e271b39cd9cdeacad4ceed58827d218.s3tc.ctex"]
+source_file="res://Imagens/sera.jpeg"
+dest_files=["res://.godot/imported/sera.jpeg-94d30139a4504cdb4cb99a3ea4233226.s3tc.ctex"]
 
 [params]
 

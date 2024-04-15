@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgerdtbgwf56c"
-path.s3tc="res://.godot/imported/fundo_menu.jpg-2e271b39cd9cdeacad4ceed58827d218.s3tc.ctex"
+uid="uid://c4marc06rbeey"
+path.s3tc="res://.godot/imported/493_000+ Fondo Azul Fotografías de stock, fotos e imágenes libres de derechos.jpeg-7d5e80057aa550ba3d64d75903de286d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Imagens/fundo_menu.jpg"
-dest_files=["res://.godot/imported/fundo_menu.jpg-2e271b39cd9cdeacad4ceed58827d218.s3tc.ctex"]
+source_file="res://493_000+ Fondo Azul Fotografías de stock, fotos e imágenes libres de derechos.jpeg"
+dest_files=["res://.godot/imported/493_000+ Fondo Azul Fotografías de stock, fotos e imágenes libres de derechos.jpeg-7d5e80057aa550ba3d64d75903de286d.s3tc.ctex"]
 
 [params]
 

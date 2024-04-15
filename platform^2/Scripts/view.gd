@@ -10,7 +10,7 @@ extends Node3D
 
 @export_group("Rotation")
 @export var rotation_speed = 120
-@export var min_rotation_x=-30
+@export var min_rotation_x=-80
 @export var max_rotation_x=-10
 
 var camera_rotation:Vector3
@@ -20,7 +20,7 @@ var zoom = 4.5
 @onready var camera = $Camera
 
 func _ready():
-	camera_rotation = Vector3(-30, 0, 0)
+	camera_rotation = Vector3(-50, 0, 0)
 	#camera_rotation = rotation_degrees # Initial rotation
 
 func _physics_process(delta):

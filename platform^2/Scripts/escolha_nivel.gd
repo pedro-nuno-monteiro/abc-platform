@@ -19,7 +19,7 @@ func _on_level_1_btn_pressed():
 	
 
 func _on_level_2_btn_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://Cenas/nivel_2.tscn")
 
 func _on_level_3_btn_pressed():
 	pass # Replace with function body.

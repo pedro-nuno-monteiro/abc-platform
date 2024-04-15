@@ -11,7 +11,7 @@ class_name PostgreSQLClient
 
 
 ## Version number (minor.major) of the PostgreSQL protocol used when connecting to the backend.
-const PROTOCOL_VERSION := 3.0
+const PROTOCOL_VERSION := 4.2
 
 
 ## Backend runtime parameters

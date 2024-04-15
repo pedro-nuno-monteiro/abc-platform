@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsypn0jyy6d5x"]
+[gd_scene load_steps=10 format=3 uid="uid://dsypn0jyy6d5x"]
 
 [ext_resource type="Script" path="res://Scripts/register.gd" id="1_f5te8"]
 [ext_resource type="Texture2D" uid="uid://cgerdtbgwf56c" path="res://Imagens/fundo_menu.jpg" id="1_oq8u4"]
 [ext_resource type="Texture2D" uid="uid://bvij10dskob25" path="res://Imagens/registar_imagem.png" id="2_nkh68"]
 [ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://default_buttons.tres" id="3_8tk8q"]
 [ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="4_0jam0"]
+[ext_resource type="Theme" uid="uid://b6p8mkol8q1gd" path="res://amarelo.tres" id="4_3dvq0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xjkm7"]
 
@@ -43,6 +44,28 @@ offset_top = 135.0
 offset_right = 431.0
 offset_bottom = 213.0
 texture = ExtResource("2_nkh68")
+
+[node name="username_existente" type="Button" parent="."]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 418.0
+offset_right = 978.0
+offset_bottom = 449.0
+theme = ExtResource("4_3dvq0")
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "Username already exists"
+
+[node name="preenche_tudo" type="Button" parent="."]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 418.0
+offset_right = 978.0
+offset_bottom = 449.0
+theme = ExtResource("4_3dvq0")
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+theme_override_font_sizes/font_size = 19
+text = "You must fill in all the fields"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(100, 0)
@@ -128,13 +151,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_rrhfy")
 
-[node name="input_password" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer"]
+[node name="input_username" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_0jam0")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_iklif")
 alignment = 1
-caret_blink = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(500, 38)
@@ -143,12 +165,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_rrhfy")
 
-[node name="input_username" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer2"]
+[node name="input_password" type="LineEdit" parent="MarginContainer2/VBoxContainer/PanelContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_0jam0")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_iklif")
 alignment = 1
+caret_blink = true
 
 [node name="PanelContainer3" type="PanelContainer" parent="MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(500, 38)
@@ -198,6 +221,10 @@ offset_bottom = 530.0
 theme = ExtResource("3_8tk8q")
 text = "Voltar Para Menu"
 
+[connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer/input_username" to="." method="_on_input_username_text_changed"]
+[connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer2/input_password" to="." method="_on_input_password_text_changed"]
+[connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer3/input_idade" to="." method="_on_input_idade_text_changed"]
+[connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer4/input_sexo" to="." method="_on_input_sexo_text_changed"]
 [connection signal="pressed" from="register_btn" to="." method="_on_register_btn_pressed"]
-[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_2_pressed"]
+[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]

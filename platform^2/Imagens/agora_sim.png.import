@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgerdtbgwf56c"
-path.s3tc="res://.godot/imported/fundo_menu.jpg-2e271b39cd9cdeacad4ceed58827d218.s3tc.ctex"
+uid="uid://d2d034se7jqwv"
+path.s3tc="res://.godot/imported/agora_sim.png-7577796c87ad92ef4740edf00eb5b1a9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Imagens/fundo_menu.jpg"
-dest_files=["res://.godot/imported/fundo_menu.jpg-2e271b39cd9cdeacad4ceed58827d218.s3tc.ctex"]
+source_file="res://Imagens/agora_sim.png"
+dest_files=["res://.godot/imported/agora_sim.png-7577796c87ad92ef4740edf00eb5b1a9.s3tc.ctex"]
 
 [params]
 

@@ -1,10 +1,11 @@
 extends Control
 
+@onready var username = $MarginContainer/HBoxContainer/VBoxContainer/username
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	username.text = str(Globals.username)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -20,6 +21,8 @@ func _on_see_stats_btn_pressed():
 
 
 func _on_exit_btn_pressed():
+	Globals.username = null
+	Globals.password = null
 	get_tree().change_scene_to_file("res://Cenas/title_screen.tscn")
 	
 
