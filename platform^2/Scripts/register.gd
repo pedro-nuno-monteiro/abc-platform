@@ -60,12 +60,12 @@ func _on_register_btn_pressed():
 	if username_valido and campos_preenchidos: 
 		var data = {
 			"username" : registo_username,
-			"password" : registo_password,
+			"password" : registo_password.sha256_text(),
 			"sexo" : sexo,
 			"idade" : int(idade)
 		}
 		database.insert_row("register", data)
-	
+		# .sha256_text() -> ver esta funcao para encriptar
 		get_tree().change_scene_to_file("res://Cenas/title_screen.tscn")
 		username_existente.visible = false
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cemqxsiyfqgxg"
-path="res://.godot/imported/SIXTY.TTF-3dc8b89e782230356a8251911418e160.fontdata"
+path="res://.godot/imported/SIXTY.TTF-7a3c7c0e026b1871bc41ac0e77bd3059.fontdata"
 
 [deps]
 
-source_file="res://SIXTY.TTF"
-dest_files=["res://.godot/imported/SIXTY.TTF-3dc8b89e782230356a8251911418e160.fontdata"]
+source_file="res://Tres/SIXTY.TTF"
+dest_files=["res://.godot/imported/SIXTY.TTF-7a3c7c0e026b1871bc41ac0e77bd3059.fontdata"]
 
 [params]
 

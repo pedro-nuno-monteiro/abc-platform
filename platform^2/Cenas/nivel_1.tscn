@@ -11,11 +11,11 @@
 [ext_resource type="Script" path="res://Scripts/hud_manager.gd" id="8_5ejdg"]
 [ext_resource type="PackedScene" uid="uid://dmsg1w56u4ygr" path="res://Cenas/pause_menu.tscn" id="8_pvc5q"]
 [ext_resource type="Texture2D" uid="uid://b2xqc3163soww" path="res://Imagens/moeda_sem_fundo_1.png" id="8_th7ws"]
-[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="9_ryvnj"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="9_ryvnj"]
 [ext_resource type="Script" path="res://Scripts/cai_morre.gd" id="12_wrav8"]
 [ext_resource type="Script" path="res://Scripts/chega_ganha.gd" id="14_inr14"]
 [ext_resource type="Script" path="res://Scripts/chega_aparece_seta.gd" id="15_jixrb"]
-[ext_resource type="PackedScene" uid="uid://d2gann7h7nhwd" path="res://arrow_2.glb" id="16_het5q"]
+[ext_resource type="PackedScene" uid="uid://d2gann7h7nhwd" path="res://Models/assets/arrow_2.glb" id="16_het5q"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ceymi"]
 panorama = ExtResource("2_46w21")
@@ -50,7 +50,7 @@ Button/styles/normal = SubResource("StyleBoxEmpty_tp2km")
 Button/styles/pressed = SubResource("StyleBoxEmpty_gavrc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyrp0"]
-size = Vector3(39.9011, 1, 115.578)
+size = Vector3(49.496, 1, 135.084)
 
 [node name="Node3D" type="Node3D"]
 process_mode = 3
@@ -373,7 +373,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09418, 0, 0)
 script = ExtResource("12_wrav8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="cai_morre"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.025, -22.3846, -37.0899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.77243, -22.3846, -46.8429)
 shape = SubResource("BoxShape3D_gyrp0")
 
 [node name="chega_ganha" type="Area3D" parent="."]

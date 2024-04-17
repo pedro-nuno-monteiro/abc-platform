@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Scripts/pontuation.gd" id="1_nqydd"]
 [ext_resource type="Texture2D" uid="uid://cgerdtbgwf56c" path="res://Imagens/fundo_menu.jpg" id="1_w4qbm"]
 [ext_resource type="Texture2D" uid="uid://b2xqc3163soww" path="res://Imagens/moeda_sem_fundo_1.png" id="2_1b06n"]
-[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="3_prj0e"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="3_prj0e"]
 [ext_resource type="Texture2D" uid="uid://yq4ev3xivfip" path="res://Imagens/results.png" id="4_jgkw8"]
 [ext_resource type="Texture2D" uid="uid://b46b1xp1s6xed" path="res://Imagens/congratulations.png" id="4_vg1ls"]
-[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://default_buttons.tres" id="5_8hdmx"]
+[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://Tres/default_buttons.tres" id="5_8hdmx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1mhw"]
 

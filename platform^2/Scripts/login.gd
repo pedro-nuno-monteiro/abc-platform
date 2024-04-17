@@ -41,7 +41,7 @@ func _on_voltar_btn_pressed():
 
 
 func _on_input_password_text_changed(new_text):
-	Globals.password = new_text
+	Globals.password = new_text.sha256_text()
 
 
 func _on_input_username_text_changed(new_text):

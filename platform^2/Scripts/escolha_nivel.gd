@@ -15,10 +15,12 @@ func _on_exit_btn_pressed():
 	
 
 func _on_level_1_btn_pressed():
+	Globals.nivel = 1
 	get_tree().change_scene_to_file("res://Cenas/nivel_1.tscn")
 	
 
 func _on_level_2_btn_pressed():
+	Globals.nivel = 2
 	get_tree().change_scene_to_file("res://Cenas/nivel_2.tscn")
 
 func _on_level_3_btn_pressed():

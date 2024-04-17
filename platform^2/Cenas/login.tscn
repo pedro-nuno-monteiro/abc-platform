@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/login.gd" id="1_bcylq"]
 [ext_resource type="Texture2D" uid="uid://cgerdtbgwf56c" path="res://Imagens/fundo_menu.jpg" id="1_vhl16"]
 [ext_resource type="Texture2D" uid="uid://c67ino6ac2mo0" path="res://Imagens/login_imagem.png" id="2_dxlbk"]
-[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://default_buttons.tres" id="2_lxxn8"]
-[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="3_3cisf"]
-[ext_resource type="Theme" uid="uid://b6p8mkol8q1gd" path="res://amarelo.tres" id="6_hovlk"]
+[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://Tres/default_buttons.tres" id="2_lxxn8"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="3_3cisf"]
+[ext_resource type="Theme" uid="uid://b6p8mkol8q1gd" path="res://Tres/amarelo.tres" id="6_hovlk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40w3s"]
 
@@ -154,6 +154,8 @@ theme_override_fonts/font = ExtResource("3_3cisf")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_3ke2y")
 alignment = 1
+secret = true
+secret_character = "*"
 
 [node name="password_username_wrong" type="Button" parent="."]
 layout_mode = 0

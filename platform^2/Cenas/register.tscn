@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/register.gd" id="1_f5te8"]
 [ext_resource type="Texture2D" uid="uid://cgerdtbgwf56c" path="res://Imagens/fundo_menu.jpg" id="1_oq8u4"]
 [ext_resource type="Texture2D" uid="uid://bvij10dskob25" path="res://Imagens/registar_imagem.png" id="2_nkh68"]
-[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://default_buttons.tres" id="3_8tk8q"]
-[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://SIXTY.TTF" id="4_0jam0"]
-[ext_resource type="Theme" uid="uid://b6p8mkol8q1gd" path="res://amarelo.tres" id="4_3dvq0"]
+[ext_resource type="Theme" uid="uid://c4ytkjk72k8w2" path="res://Tres/default_buttons.tres" id="3_8tk8q"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="4_0jam0"]
+[ext_resource type="Theme" uid="uid://b6p8mkol8q1gd" path="res://Tres/amarelo.tres" id="4_3dvq0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xjkm7"]
 
@@ -46,6 +46,7 @@ offset_bottom = 213.0
 texture = ExtResource("2_nkh68")
 
 [node name="username_existente" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 179.0
 offset_top = 418.0
@@ -57,6 +58,7 @@ theme_override_font_sizes/font_size = 19
 text = "Username already exists"
 
 [node name="preenche_tudo" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 179.0
 offset_top = 418.0
@@ -226,5 +228,5 @@ text = "Voltar Para Menu"
 [connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer3/input_idade" to="." method="_on_input_idade_text_changed"]
 [connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer4/input_sexo" to="." method="_on_input_sexo_text_changed"]
 [connection signal="pressed" from="register_btn" to="." method="_on_register_btn_pressed"]
-[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_2_pressed"]
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]
+[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_2_pressed"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmsg1w56u4ygr"]
+[gd_scene load_steps=7 format=3 uid="uid://o8aejnekw8h6"]
 
-[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_md5ut"]
-[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="1_oqbpq"]
-[ext_resource type="Theme" uid="uid://d3dy781xx4x04" path="res://Tres/pause_menu.tres" id="1_ru4n7"]
+[ext_resource type="Script" path="res://Scripts/pause_menu_2.gd" id="1_13woj"]
+[ext_resource type="Theme" uid="uid://d3dy781xx4x04" path="res://Tres/pause_menu.tres" id="2_otb4r"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="3_7g27v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxlfx"]
 
@@ -14,7 +14,7 @@ events = [SubResource("InputEventAction_06aw5")]
 
 [node name="pause_menu" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_md5ut")
+script = ExtResource("1_13woj")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = -1
@@ -42,8 +42,8 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_kxlfx")
 [node name="resume_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-theme = ExtResource("1_ru4n7")
-theme_override_fonts/font = ExtResource("1_oqbpq")
+theme = ExtResource("2_otb4r")
+theme_override_fonts/font = ExtResource("3_7g27v")
 theme_override_font_sizes/font_size = 50
 shortcut = SubResource("Shortcut_vl3fp")
 text = "RESUME"
@@ -54,8 +54,8 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_kxlfx")
 
 [node name="quit_btn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_ru4n7")
-theme_override_fonts/font = ExtResource("1_oqbpq")
+theme = ExtResource("2_otb4r")
+theme_override_fonts/font = ExtResource("3_7g27v")
 theme_override_font_sizes/font_size = 50
 text = "QUIT"
 

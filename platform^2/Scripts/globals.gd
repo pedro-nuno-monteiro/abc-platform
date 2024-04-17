@@ -8,3 +8,4 @@ var seconds:= 0
 var paused
 var rotation_arrow
 var vazio
+var nivel

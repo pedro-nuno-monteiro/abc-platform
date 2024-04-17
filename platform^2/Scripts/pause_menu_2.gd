@@ -33,6 +33,7 @@ func _on_quit_btn_pressed():
 	Globals.paused=false
 	get_tree().change_scene_to_file("res://Cenas/depois_login.tscn")
 
+
 func _on_pause_btn_pressed():
 	visible = true
 	get_tree().paused = true
