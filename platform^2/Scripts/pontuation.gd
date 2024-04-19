@@ -22,10 +22,21 @@ func _ready():
 		#"coins" : {"data_type": "int", "not_null":true},
 		#"register_username" : {"data_type": "int", "not_null":true}
 	#}
-	#database.create_table("register", table)
+	#database.create_table("scores", table)
 	
+	var data = {
+			"nivel" : Globals.nivel,
+			"segundos" : Globals.seconds,
+			"coins" : Globals.coins,
+			"register_username" : Globals.username,
+			"minutos" : Globals.minutes
+		}
+		
+	database.select_rows('scores', "register_username = '" + Globals.username + "' and minutos = '" + str(Globals.minutes) + "' and segundos = '" + str(Globals.seconds) + "' and nivel = '" + str(Globals.nivel) + "' and coins = '" + str(Globals.coins) + "'", ["*"])
+	var query_result : Array = database.query_result
 	
-
+	if query_result.is_empty():
+		database.insert_row("scores", data)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

@@ -15,11 +15,15 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
-		visible = true
-		get_tree().paused = true
-		Globals.paused=true
-		resume_btn.grab_focus()
-		
+		if visible == false:
+			visible = true
+			get_tree().paused = true
+			Globals.paused=true
+			resume_btn.grab_focus()
+		else: 
+			visible = false
+			get_tree().paused = false
+			Globals.paused=false
 
 
 func _on_resume_btn_pressed():
@@ -39,3 +43,4 @@ func _on_pause_btn_pressed():
 	get_tree().paused = true
 	Globals.paused=true
 	resume_btn.grab_focus()
+	

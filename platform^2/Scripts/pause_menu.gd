@@ -26,7 +26,7 @@ func _on_resume_btn_pressed():
 	get_tree().paused = false
 	Globals.paused=false
 	visible = false
-
+	
 func _on_quit_btn_pressed():
 	queue_free()
 	get_tree().paused = false
@@ -38,3 +38,4 @@ func _on_pause_btn_pressed():
 	get_tree().paused = true
 	Globals.paused=true
 	resume_btn.grab_focus()
+
