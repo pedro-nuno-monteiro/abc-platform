@@ -35,8 +35,6 @@ func _ready():
 
 #func preencher_scroll_container():
 	
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

@@ -1,0 +1,857 @@
+[gd_scene load_steps=31 format=3 uid="uid://fn3r3sglsbbu"]
+
+[ext_resource type="Script" path="res://Scripts/view.gd" id="1_ut801"]
+[ext_resource type="Texture2D" uid="uid://coan8qi0751lp" path="res://Imagens/Dream like sky.jpg" id="2_u3sjm"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="3_sn07d"]
+[ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://Models/actors/models/gobot/model/gobot.glb" id="4_6xtbe"]
+[ext_resource type="PackedScene" uid="uid://chdu55kvad3md" path="res://Cenas/terreno_azul.tscn" id="5_50lou"]
+[ext_resource type="PackedScene" uid="uid://6eltqbvh52f6" path="res://Models/assets/buttonRound.glb" id="6_n2ac7"]
+[ext_resource type="PackedScene" uid="uid://b74qyp7yb5on8" path="res://Cenas/terreno_roxo.tscn" id="7_uuhwa"]
+[ext_resource type="PackedScene" uid="uid://ekri50jkelwb" path="res://Models/assets/bandeira.glb" id="8_pgxxo"]
+[ext_resource type="PackedScene" uid="uid://bpymta3kh8qnc" path="res://Cenas/coin.tscn" id="9_ekbjj"]
+[ext_resource type="Script" path="res://Scripts/cai_morre.gd" id="10_25w0b"]
+[ext_resource type="Script" path="res://Scripts/chega_ganha.gd" id="11_hvi1h"]
+[ext_resource type="Script" path="res://Scripts/hud_manager.gd" id="12_rj3gh"]
+[ext_resource type="Texture2D" uid="uid://b2xqc3163soww" path="res://Imagens/moeda_sem_fundo_1.png" id="13_gpg03"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="14_m5qd5"]
+[ext_resource type="PackedScene" uid="uid://dmsg1w56u4ygr" path="res://Cenas/pause_menu.tscn" id="15_awqw5"]
+[ext_resource type="Script" path="res://Scripts/chega_aparece_seta.gd" id="16_0ppiy"]
+[ext_resource type="PackedScene" uid="uid://d2gann7h7nhwd" path="res://Models/assets/arrow_2.glb" id="17_cx6s4"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_mwht3"]
+panorama = ExtResource("2_u3sjm")
+
+[sub_resource type="Sky" id="Sky_mr5ul"]
+sky_material = SubResource("PanoramaSkyMaterial_mwht3")
+
+[sub_resource type="Environment" id="Environment_ihv5r"]
+background_mode = 2
+sky = SubResource("Sky_mr5ul")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sto2j"]
+height = 1.5348
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7tkne"]
+size = Vector3(52.1759, 1, 190.809)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hokvu"]
+size = Vector3(6.97582, 6.94287, 1.44678)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h3ikf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvj78"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ljnof"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cett"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jfhj6"]
+
+[sub_resource type="Theme" id="Theme_lj0q8"]
+Button/styles/focus = SubResource("StyleBoxEmpty_lvj78")
+Button/styles/hover = SubResource("StyleBoxEmpty_ljnof")
+Button/styles/normal = SubResource("StyleBoxEmpty_8cett")
+Button/styles/pressed = SubResource("StyleBoxEmpty_jfhj6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oykev"]
+size = Vector3(4.16257, 6.94287, 1.44678)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera_pivot" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_ut801")
+target = NodePath("../player")
+
+[node name="Camera" type="Camera3D" parent="Camera_pivot"]
+fov = 108.985
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ihv5r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225515, 0.594105, -0.336922)
+shadow_enabled = true
+
+[node name="player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341057, 3, 0)
+script = ExtResource("3_sn07d")
+view = NodePath("../Camera_pivot")
+
+[node name="gobot" parent="player" instance=ExtResource("4_6xtbe")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="player"]
+transform = Transform3D(-0.00982612, 0, 0.999952, 0, 1, 0, -0.999952, 0, -0.00982612, 0, 0.66353, 0)
+shape = SubResource("CapsuleShape3D_sto2j")
+
+[node name="Pasta_Terrenos_1" type="Node3D" parent="."]
+
+[node name="terreno_1" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.380754, 0, 0.22609)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_1" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_2" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.380754, 0, -8.2844)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_2" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_3" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 7.06483, 0, -15.8001)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_3" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_6" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -6.22369, 0, -16.0924)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_6" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_10" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -11.5585, 0, -23.6664)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_10" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_11" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -11.5585, 0, -32.3605)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_11" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_4" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.338215, 0, -17.1934)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_4" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_5" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.338215, 0, -17.1934)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_5" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_7" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 5.18805, 0, -25.2596)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_7" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_8" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 9.69646, 0, -33.1347)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_8" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_9" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.411221, 0, -33.7389)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_9" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_12" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 5.18192, 0, -41.6942)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_12" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_13" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -5.77421, 0, -40.7644)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_13" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_14" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -0.694706, 0, -49.8588)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_14" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_15" parent="Pasta_Terrenos_1" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -0.694706, 0, -58.2031)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_1/terreno_15" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="Pasta_Terrenos_2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -67.2361)
+
+[node name="terreno_1" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.380754, 0, 0.22609)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_1" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_2" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.380754, 0, -8.2844)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_2" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_3" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 7.06483, 0, -15.8001)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_3" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_6" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -6.22369, 0, -16.0924)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_6" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_10" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -11.5585, 0, -23.6664)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_10" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_11" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -11.5585, 0, -32.3605)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_11" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_4" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.338215, 0, -17.1934)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_4" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_5" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.338215, 0, -17.1934)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_5" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_7" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 5.18805, 0, -25.2596)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_7" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_8" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 9.69646, 0, -33.1347)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_8" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_9" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.411221, 0, -33.7389)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_9" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_12" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 5.18192, 0, -41.6942)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_12" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_13" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -5.77421, 0, -40.7644)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_13" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_14" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -0.694706, 0, -49.8588)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_14" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_15" parent="Pasta_Terrenos_2" instance=ExtResource("5_50lou")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -0.694706, 0, -58.2031)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_15" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.0343, 1.28131, 0.00162929)
+
+[node name="terreno_16" parent="Pasta_Terrenos_2" instance=ExtResource("7_uuhwa")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.02475, 0, -66.2403)
+
+[node name="buttonRound2" parent="Pasta_Terrenos_2/terreno_16" instance=ExtResource("6_n2ac7")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 1.51795, 1.28131, -0.134185)
+
+[node name="bandeira" parent="." instance=ExtResource("8_pgxxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.66338, 1.28131, -135.328)
+
+[node name="bandeira2" parent="." instance=ExtResource("8_pgxxo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.42371, 1.28131, -135.355)
+
+[node name="Pasta_M" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633091, -0.949626, -1.58875)
+
+[node name="Pasta_Moedas2" type="Node3D" parent="Pasta_M"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -66.5715)
+
+[node name="coin_1" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190414, 0, 0.0839825)
+
+[node name="coin_2" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37465, 0, -14.3776)
+
+[node name="coin_3" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0881286, 0, -7.44773)
+
+[node name="coin_4" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.16373, 0, -14.7581)
+
+[node name="coin_5" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.80723, 0, -23.702)
+
+[node name="coin_6" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.467627, 0, -32.7373)
+
+[node name="coin_7" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61057, 0, -39.4329)
+
+[node name="coin_8" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4132, 0, -39.7612)
+
+[node name="coin_9" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60228, 0, -48.5485)
+
+[node name="coin_11" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60228, 0, -56.775)
+
+[node name="coin_12" parent="Pasta_M/Pasta_Moedas2" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70007, 0, -64.4323)
+
+[node name="Pasta_Moedas" type="Node3D" parent="Pasta_M"]
+
+[node name="coin_1" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190414, 0, 0.0839825)
+
+[node name="coin_2" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37465, 0, -14.3776)
+
+[node name="coin_3" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0881286, 0, -7.44773)
+
+[node name="coin_4" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.16373, 0, -14.7581)
+
+[node name="coin_5" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.80723, 0, -23.702)
+
+[node name="coin_6" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.467627, 0, -32.7373)
+
+[node name="coin_7" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.61057, 0, -39.4329)
+
+[node name="coin_8" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4132, 0, -39.7612)
+
+[node name="coin_9" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60228, 0, -48.5485)
+
+[node name="coin_11" parent="Pasta_M/Pasta_Moedas" instance=ExtResource("9_ekbjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60228, 0, -56.775)
+
+[node name="cai_morre" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09418, 0, 0)
+script = ExtResource("10_25w0b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cai_morre"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66547, -22.3846, -71.8669)
+shape = SubResource("BoxShape3D_7tkne")
+
+[node name="chega_ganha" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38721, 0, -52.6134)
+script = ExtResource("11_hvi1h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chega_ganha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.164963, 5.31594, -82.6062)
+shape = SubResource("BoxShape3D_hokvu")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+script = ExtResource("12_rj3gh")
+
+[node name="Timer" type="Timer" parent="HUD/Control"]
+process_mode = 1
+autostart = true
+
+[node name="container" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 79.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="coins_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="coins_icon" type="TextureRect" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+texture = ExtResource("13_gpg03")
+expand_mode = 1
+
+[node name="VSeparator" type="VSeparator" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_h3ikf")
+
+[node name="coins_x" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_m5qd5")
+theme_override_font_sizes/font_size = 59
+text = "x"
+
+[node name="VSeparator2" type="VSeparator" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_h3ikf")
+
+[node name="coins_counter" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_m5qd5")
+theme_override_font_sizes/font_size = 52
+text = "000"
+
+[node name="timer_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="timer_label" type="Label" parent="HUD/Control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_m5qd5")
+theme_override_font_sizes/font_size = 50
+text = "Time:"
+
+[node name="VSeparator" type="VSeparator" parent="HUD/Control/container/timer_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_h3ikf")
+
+[node name="timer_counter" type="Label" parent="HUD/Control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_m5qd5")
+theme_override_font_sizes/font_size = 47
+text = "00:00"
+
+[node name="pause_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="pause_btn" type="Button" parent="HUD/Control/container/pause_container"]
+custom_minimum_size = Vector2(65, 3)
+layout_mode = 2
+theme = SubResource("Theme_lj0q8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_m5qd5")
+theme_override_font_sizes/font_size = 50
+text = "11"
+
+[node name="pause_menu" parent="." instance=ExtResource("15_awqw5")]
+
+[node name="Pasta_Setas" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.377699, 3.8147e-06, -0.0736198)
+
+[node name="chega_aparece_seta_1" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.776751, 3.8147e-06, 0.494953)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_1" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_2" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.776751, 3.8147e-06, -8.03035)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_2" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_3" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.878847, 7.62939e-06, -16.7983)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_3" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_4" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8261, 3.8147e-06, -15.3153)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_4" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_5" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.39963, 3.8147e-06, -15.6545)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_5" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_6" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7403, 0, -23.3088)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_6" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_7" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.96311, 0, -24.8935)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_7" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_8" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47151, 0, -32.5542)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_8" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_9" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7939, -3.8147e-06, -32.0403)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_9" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_10" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809499, -3.8147e-06, -33.2834)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_10" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_11" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.89563, -3.8147e-06, -40.296)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_11" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_12" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01726, -3.8147e-06, -41.2202)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_12" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_13" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84945, -3.8147e-06, -49.3196)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_13" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_14" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84945, -3.8147e-06, -57.8839)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_14" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_15" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.809432, -3.8147e-06, -66.4481)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_15" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_16" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.924973, -3.8147e-06, -74.8916)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_16" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_17" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.924973, -3.8147e-06, -84.0069)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_17" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_18" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.82872, -3.8147e-06, -82.641)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_18" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_19" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3757, -3.8147e-06, -83.0512)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_19" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_20" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6793, -3.8147e-06, -90.4303)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_20" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_21" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.95037, -3.8147e-06, -91.8857)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_21" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_22" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.38524, -3.8147e-06, -99.9069)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_22" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_23" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8272, -3.8147e-06, -99.2352)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_23" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_24" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876184, -3.8147e-06, -100.575)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_24" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_25" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.0376, -3.8147e-06, -108.398)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_25" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_26" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9446, -3.8147e-06, -107.663)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_26" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_27" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95835, -3.8147e-06, -116.486)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_27" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[node name="chega_aparece_seta_28" type="Area3D" parent="Pasta_Setas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85461, -3.8147e-06, -124.992)
+script = ExtResource("16_0ppiy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pasta_Setas/chega_aparece_seta_28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444734, 2.3445, -2.13859)
+shape = SubResource("BoxShape3D_oykev")
+
+[node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_28" instance=ExtResource("17_cx6s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.806361, 1.54301, -2.67977)
+
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_1" to="Pasta_M/Pasta_Moedas2/coin_1" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_2" to="Pasta_M/Pasta_Moedas2/coin_2" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_3" to="Pasta_M/Pasta_Moedas2/coin_3" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_4" to="Pasta_M/Pasta_Moedas2/coin_4" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_5" to="Pasta_M/Pasta_Moedas2/coin_5" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_6" to="Pasta_M/Pasta_Moedas2/coin_6" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_7" to="Pasta_M/Pasta_Moedas2/coin_7" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_8" to="Pasta_M/Pasta_Moedas2/coin_8" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_9" to="Pasta_M/Pasta_Moedas2/coin_9" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_11" to="Pasta_M/Pasta_Moedas2/coin_11" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas2/coin_12" to="Pasta_M/Pasta_Moedas2/coin_12" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_1" to="Pasta_M/Pasta_Moedas/coin_1" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_2" to="Pasta_M/Pasta_Moedas/coin_2" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_3" to="Pasta_M/Pasta_Moedas/coin_3" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_4" to="Pasta_M/Pasta_Moedas/coin_4" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_5" to="Pasta_M/Pasta_Moedas/coin_5" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_6" to="Pasta_M/Pasta_Moedas/coin_6" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_7" to="Pasta_M/Pasta_Moedas/coin_7" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_8" to="Pasta_M/Pasta_Moedas/coin_8" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_9" to="Pasta_M/Pasta_Moedas/coin_9" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_M/Pasta_Moedas/coin_11" to="Pasta_M/Pasta_Moedas/coin_11" method="_on_body_entered"]
+[connection signal="body_entered" from="cai_morre" to="cai_morre" method="_on_body_entered"]
+[connection signal="body_entered" from="chega_ganha" to="chega_ganha" method="_on_body_entered"]
+[connection signal="timeout" from="HUD/Control/Timer" to="HUD/Control" method="_on_timer_timeout"]
+[connection signal="pressed" from="HUD/Control/container/pause_container/pause_btn" to="pause_menu" method="_on_pause_btn_pressed"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_1" to="Pasta_Setas/chega_aparece_seta_1" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_1" to="Pasta_Setas/chega_aparece_seta_1" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_2" to="Pasta_Setas/chega_aparece_seta_2" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_2" to="Pasta_Setas/chega_aparece_seta_2" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_3" to="Pasta_Setas/chega_aparece_seta_3" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_3" to="Pasta_Setas/chega_aparece_seta_3" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_4" to="Pasta_Setas/chega_aparece_seta_4" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_4" to="Pasta_Setas/chega_aparece_seta_4" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_5" to="Pasta_Setas/chega_aparece_seta_5" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_5" to="Pasta_Setas/chega_aparece_seta_5" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_6" to="Pasta_Setas/chega_aparece_seta_6" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_6" to="Pasta_Setas/chega_aparece_seta_6" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_7" to="Pasta_Setas/chega_aparece_seta_7" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_7" to="Pasta_Setas/chega_aparece_seta_7" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_8" to="Pasta_Setas/chega_aparece_seta_8" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_8" to="Pasta_Setas/chega_aparece_seta_8" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_9" to="Pasta_Setas/chega_aparece_seta_9" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_9" to="Pasta_Setas/chega_aparece_seta_9" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_10" to="Pasta_Setas/chega_aparece_seta_10" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_10" to="Pasta_Setas/chega_aparece_seta_10" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_11" to="Pasta_Setas/chega_aparece_seta_11" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_11" to="Pasta_Setas/chega_aparece_seta_11" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_12" to="Pasta_Setas/chega_aparece_seta_12" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_12" to="Pasta_Setas/chega_aparece_seta_12" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_13" to="Pasta_Setas/chega_aparece_seta_13" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_13" to="Pasta_Setas/chega_aparece_seta_13" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_14" to="Pasta_Setas/chega_aparece_seta_14" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_14" to="Pasta_Setas/chega_aparece_seta_14" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_15" to="Pasta_Setas/chega_aparece_seta_15" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_15" to="Pasta_Setas/chega_aparece_seta_15" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_16" to="Pasta_Setas/chega_aparece_seta_16" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_16" to="Pasta_Setas/chega_aparece_seta_16" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_17" to="Pasta_Setas/chega_aparece_seta_17" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_17" to="Pasta_Setas/chega_aparece_seta_17" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_18" to="Pasta_Setas/chega_aparece_seta_18" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_18" to="Pasta_Setas/chega_aparece_seta_18" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_19" to="Pasta_Setas/chega_aparece_seta_19" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_19" to="Pasta_Setas/chega_aparece_seta_19" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_20" to="Pasta_Setas/chega_aparece_seta_20" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_20" to="Pasta_Setas/chega_aparece_seta_20" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_21" to="Pasta_Setas/chega_aparece_seta_21" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_21" to="Pasta_Setas/chega_aparece_seta_21" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_22" to="Pasta_Setas/chega_aparece_seta_22" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_22" to="Pasta_Setas/chega_aparece_seta_22" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_23" to="Pasta_Setas/chega_aparece_seta_23" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_23" to="Pasta_Setas/chega_aparece_seta_23" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_24" to="Pasta_Setas/chega_aparece_seta_24" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_24" to="Pasta_Setas/chega_aparece_seta_24" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_25" to="Pasta_Setas/chega_aparece_seta_25" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_25" to="Pasta_Setas/chega_aparece_seta_25" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_26" to="Pasta_Setas/chega_aparece_seta_26" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_26" to="Pasta_Setas/chega_aparece_seta_26" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_27" to="Pasta_Setas/chega_aparece_seta_27" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_27" to="Pasta_Setas/chega_aparece_seta_27" method="_on_body_exited"]
+[connection signal="body_entered" from="Pasta_Setas/chega_aparece_seta_28" to="Pasta_Setas/chega_aparece_seta_28" method="_on_body_entered"]
+[connection signal="body_exited" from="Pasta_Setas/chega_aparece_seta_28" to="Pasta_Setas/chega_aparece_seta_28" method="_on_body_exited"]

@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func _on_exit_btn_pressed():
@@ -24,12 +24,12 @@ func _on_level_2_btn_pressed():
 	get_tree().change_scene_to_file("res://Cenas/nivel_2.tscn")
 
 func _on_level_3_btn_pressed():
-	pass # Replace with function body.
-
+	Globals.nivel = 3
+	get_tree().change_scene_to_file("res://Cenas/nivel_3.tscn")
 
 func _on_level_4_btn_pressed():
-	pass # Replace with function body.
-
+	Globals.nivel = 4
+	get_tree().change_scene_to_file("res://Cenas/nivel_4.tscn")
 
 func _on_level_5_btn_pressed():
 	pass # Replace with function body.

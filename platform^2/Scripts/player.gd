@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 270.0
+const SPEED = 300.0
 const JUMP_VELOCITY = 12.0
 @onready var animator = get_node("gobot/AnimationPlayer") as AnimationPlayer
 var gravity = 0

@@ -49,6 +49,12 @@ func _on_play_again_btn_pressed():
 		
 	if Globals.nivel == 2: 
 		get_tree().change_scene_to_file("res://Cenas/nivel_2.tscn")
+	
+	if Globals.nivel == 3: 
+		get_tree().change_scene_to_file("res://Cenas/nivel_3.tscn")
+		
+	if Globals.nivel == 4:
+		get_tree().change_scene_to_file("res://Cenas/nivel_4.tscn")
 
 
 func _on_quit_btn_pressed():

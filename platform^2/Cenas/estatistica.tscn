@@ -85,6 +85,7 @@ layout_mode = 2
 script = ExtResource("5_vpsof")
 
 [node name="resume_btn" type="Button" parent="."]
+layout_mode = 0
 offset_left = 160.0
 offset_top = 139.0
 offset_right = 321.0
@@ -97,6 +98,7 @@ shortcut = SubResource("Shortcut_p4fod")
 text = "Level"
 
 [node name="resume_btn2" type="Button" parent="."]
+layout_mode = 0
 offset_left = 506.0
 offset_top = 142.0
 offset_right = 667.0
@@ -109,6 +111,7 @@ shortcut = SubResource("Shortcut_p4fod")
 text = "Time"
 
 [node name="resume_btn3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 832.0
 offset_top = 135.0
 offset_right = 993.0

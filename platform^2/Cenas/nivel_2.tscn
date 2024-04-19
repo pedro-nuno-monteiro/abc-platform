@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bgkest1d5bhfy"]
+[gd_scene load_steps=31 format=3 uid="uid://bgkest1d5bhfy"]
 
 [ext_resource type="Script" path="res://Scripts/view.gd" id="1_ptu6u"]
 [ext_resource type="Texture2D" uid="uid://dqsjfktogru3m" path="res://Imagens/merda.jpg" id="2_8tbwi"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://o8aejnekw8h6" path="res://Cenas/pause_menu_2.tscn" id="14_finh7"]
 [ext_resource type="Script" path="res://Scripts/chega_aparece_seta.gd" id="15_mvfgi"]
 [ext_resource type="PackedScene" uid="uid://d2gann7h7nhwd" path="res://Models/assets/arrow_2.glb" id="16_hwukm"]
+[ext_resource type="PackedScene" uid="uid://ekri50jkelwb" path="res://Models/assets/bandeira.glb" id="17_lksd0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_pv7jy"]
 panorama = ExtResource("2_8tbwi")
@@ -34,23 +35,23 @@ height = 1.5348
 size = Vector3(45.9813, 1, 166.331)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wxi8"]
-size = Vector3(4.16257, 6.94287, 1.44678)
+size = Vector3(4.71166, 7.58667, 1.44678)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03rlm"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aeybk"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lhq83"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_237p0"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3o1d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7n1jc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vpo0w"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xy7vb"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2augf"]
 
 [sub_resource type="Theme" id="Theme_i1egw"]
-Button/styles/focus = SubResource("StyleBoxEmpty_aeybk")
-Button/styles/hover = SubResource("StyleBoxEmpty_237p0")
-Button/styles/normal = SubResource("StyleBoxEmpty_7n1jc")
-Button/styles/pressed = SubResource("StyleBoxEmpty_xy7vb")
+Button/styles/focus = SubResource("StyleBoxEmpty_lhq83")
+Button/styles/hover = SubResource("StyleBoxEmpty_d3o1d")
+Button/styles/normal = SubResource("StyleBoxEmpty_vpo0w")
+Button/styles/pressed = SubResource("StyleBoxEmpty_2augf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0i8ya"]
 size = Vector3(4.16257, 6.94287, 1.44678)
@@ -280,7 +281,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.5331)
 script = ExtResource("10_e4q3y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="chega_ganha"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.960288, 5.31594, -82.4691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.234443, 4.99404, -82.4691)
 shape = SubResource("BoxShape3D_0wxi8")
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -621,6 +622,12 @@ shape = SubResource("BoxShape3D_0i8ya")
 
 [node name="arrow_2" parent="Pasta_Setas/chega_aparece_seta_22" instance=ExtResource("16_hwukm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.734801, 1.54301, -2.6023)
+
+[node name="bandeira" parent="." instance=ExtResource("17_lksd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.999519, 1.28131, -123.918)
+
+[node name="bandeira2" parent="." instance=ExtResource("17_lksd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94808, 1.38345, -124.075)
 
 [connection signal="body_entered" from="Pasta_Moedas/coin_1" to="Pasta_Moedas/coin_1" method="_on_body_entered"]
 [connection signal="body_entered" from="Pasta_Moedas/coin_2" to="Pasta_Moedas/coin_2" method="_on_body_entered"]

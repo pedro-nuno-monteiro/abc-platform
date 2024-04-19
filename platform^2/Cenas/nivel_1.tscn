@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://8nj5w2mewt06"]
+[gd_scene load_steps=30 format=3 uid="uid://8nj5w2mewt06"]
 
 [ext_resource type="Script" path="res://Scripts/view.gd" id="1_832at"]
 [ext_resource type="Texture2D" uid="uid://dx2il5bs1m4in" path="res://Imagens/tentativa2.jpg" id="2_46w21"]
@@ -16,22 +16,23 @@
 [ext_resource type="Script" path="res://Scripts/chega_ganha.gd" id="14_inr14"]
 [ext_resource type="Script" path="res://Scripts/chega_aparece_seta.gd" id="15_jixrb"]
 [ext_resource type="PackedScene" uid="uid://d2gann7h7nhwd" path="res://Models/assets/arrow_2.glb" id="16_het5q"]
+[ext_resource type="PackedScene" uid="uid://ekri50jkelwb" path="res://Models/assets/bandeira.glb" id="17_y25uc"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ceymi"]
 panorama = ExtResource("2_46w21")
 
-[sub_resource type="Sky" id="Sky_ft5sk"]
+[sub_resource type="Sky" id="Sky_1up2l"]
 sky_material = SubResource("PanoramaSkyMaterial_ceymi")
 
 [sub_resource type="Environment" id="Environment_xgv57"]
 background_mode = 2
-sky = SubResource("Sky_ft5sk")
+sky = SubResource("Sky_1up2l")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bwlx3"]
 height = 1.5348
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7155"]
-size = Vector3(4.16257, 6.94287, 1.44678)
+size = Vector3(6.97582, 6.94287, 1.44678)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqk3l"]
 
@@ -380,8 +381,14 @@ shape = SubResource("BoxShape3D_gyrp0")
 script = ExtResource("14_inr14")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="chega_ganha"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24166, 5.31594, -82.4691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.164963, 5.31594, -81.7465)
 shape = SubResource("BoxShape3D_l7155")
+
+[node name="bandeira" parent="." instance=ExtResource("17_y25uc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520442, 1.28131, -81.7273)
+
+[node name="bandeira2" parent="." instance=ExtResource("17_y25uc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62042, 1.28131, -81.6332)
 
 [connection signal="body_entered" from="Pasta_Moedas/coin_1" to="Pasta_Moedas/coin_1" method="_on_body_entered"]
 [connection signal="body_entered" from="Pasta_Moedas/coin_2" to="Pasta_Moedas/coin_2" method="_on_body_entered"]

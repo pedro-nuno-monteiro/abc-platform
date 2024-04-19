@@ -1,0 +1,175 @@
+[gd_scene load_steps=21 format=3 uid="uid://yas0xihomxcu"]
+
+[ext_resource type="Script" path="res://Scripts/view.gd" id="1_ig8j6"]
+[ext_resource type="Texture2D" uid="uid://bum848tuipph1" path="res://Imagens/sera.jpeg" id="2_kg77h"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="3_rv6rq"]
+[ext_resource type="PackedScene" uid="uid://kod0awm1ha4o" path="res://Models/actors/models/gobot/model/gobot.glb" id="4_1nhhv"]
+[ext_resource type="PackedScene" uid="uid://chdu55kvad3md" path="res://Cenas/terreno_azul.tscn" id="5_d4tsq"]
+[ext_resource type="PackedScene" uid="uid://6eltqbvh52f6" path="res://Models/assets/buttonRound.glb" id="6_lypgu"]
+[ext_resource type="Script" path="res://Scripts/hud_manager.gd" id="7_2imwv"]
+[ext_resource type="Texture2D" uid="uid://b2xqc3163soww" path="res://Imagens/moeda_sem_fundo_1.png" id="8_guogo"]
+[ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="9_6m11r"]
+[ext_resource type="PackedScene" uid="uid://dmsg1w56u4ygr" path="res://Cenas/pause_menu.tscn" id="10_rw0mj"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xcsh1"]
+panorama = ExtResource("2_kg77h")
+
+[sub_resource type="Sky" id="Sky_dfyiw"]
+sky_material = SubResource("PanoramaSkyMaterial_xcsh1")
+
+[sub_resource type="Environment" id="Environment_ylnap"]
+background_mode = 2
+sky = SubResource("Sky_dfyiw")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_35d5y"]
+height = 1.5348
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxw8i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aeybk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_237p0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7n1jc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xy7vb"]
+
+[sub_resource type="Theme" id="Theme_pd2l2"]
+Button/styles/focus = SubResource("StyleBoxEmpty_aeybk")
+Button/styles/hover = SubResource("StyleBoxEmpty_237p0")
+Button/styles/normal = SubResource("StyleBoxEmpty_7n1jc")
+Button/styles/pressed = SubResource("StyleBoxEmpty_xy7vb")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera_pivot" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("1_ig8j6")
+target = NodePath("../player")
+
+[node name="Camera" type="Camera3D" parent="Camera_pivot"]
+fov = 108.985
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ylnap")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225515, 11.252, -0.336922)
+shadow_enabled = true
+
+[node name="player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341057, 3, 0)
+script = ExtResource("3_rv6rq")
+view = NodePath("../Camera_pivot")
+
+[node name="gobot" parent="player" instance=ExtResource("4_1nhhv")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="player"]
+transform = Transform3D(-0.00982612, 0, 0.999952, 0, 1, 0, -0.999952, 0, -0.00982612, 0, 0.66353, 0)
+shape = SubResource("CapsuleShape3D_35d5y")
+
+[node name="Pasta_Terrenos" type="Node3D" parent="."]
+
+[node name="terreno_1" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.380754, 0, 0.22609)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_1" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 648.0
+script = ExtResource("7_2imwv")
+
+[node name="Timer" type="Timer" parent="HUD/Control"]
+process_mode = 1
+autostart = true
+
+[node name="container" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 79.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="coins_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="coins_icon" type="TextureRect" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+texture = ExtResource("8_guogo")
+expand_mode = 1
+
+[node name="VSeparator" type="VSeparator" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_yxw8i")
+
+[node name="coins_x" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_6m11r")
+theme_override_font_sizes/font_size = 59
+text = "x"
+
+[node name="VSeparator2" type="VSeparator" parent="HUD/Control/container/coins_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_yxw8i")
+
+[node name="coins_counter" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_6m11r")
+theme_override_font_sizes/font_size = 52
+text = "000"
+
+[node name="timer_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="timer_label" type="Label" parent="HUD/Control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_6m11r")
+theme_override_font_sizes/font_size = 50
+text = "Time:"
+
+[node name="VSeparator" type="VSeparator" parent="HUD/Control/container/timer_container"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_yxw8i")
+
+[node name="timer_counter" type="Label" parent="HUD/Control/container/timer_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_6m11r")
+theme_override_font_sizes/font_size = 47
+text = "00:00"
+
+[node name="pause_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="pause_btn" type="Button" parent="HUD/Control/container/pause_container"]
+custom_minimum_size = Vector2(65, 3)
+layout_mode = 2
+theme = SubResource("Theme_pd2l2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_6m11r")
+theme_override_font_sizes/font_size = 50
+text = "11"
+
+[node name="pause_menu" parent="." instance=ExtResource("10_rw0mj")]
+
+[connection signal="timeout" from="HUD/Control/Timer" to="HUD/Control" method="_on_timer_timeout"]
+[connection signal="pressed" from="HUD/Control/container/pause_container/pause_btn" to="pause_menu" method="_on_pause_btn_pressed"]
