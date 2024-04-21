@@ -5,6 +5,7 @@ var coins := 1
 const ROTATION_SPEED := 50.0
 
 var start_pos := position.y
+
 var end_pos := position.y + 0.5
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -228,5 +228,5 @@ text = "Voltar Para Menu"
 [connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer3/input_idade" to="." method="_on_input_idade_text_changed"]
 [connection signal="text_changed" from="MarginContainer2/VBoxContainer/PanelContainer4/input_sexo" to="." method="_on_input_sexo_text_changed"]
 [connection signal="pressed" from="register_btn" to="." method="_on_register_btn_pressed"]
-[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]
 [connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_2_pressed"]
+[connection signal="pressed" from="voltar_btn" to="." method="_on_voltar_btn_pressed"]

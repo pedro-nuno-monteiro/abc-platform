@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://yas0xihomxcu"]
+[gd_scene load_steps=28 format=3 uid="uid://yas0xihomxcu"]
 
 [ext_resource type="Script" path="res://Scripts/view.gd" id="1_ig8j6"]
 [ext_resource type="Texture2D" uid="uid://bum848tuipph1" path="res://Imagens/sera.jpeg" id="2_kg77h"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://b2xqc3163soww" path="res://Imagens/moeda_sem_fundo_1.png" id="8_guogo"]
 [ext_resource type="FontFile" uid="uid://cemqxsiyfqgxg" path="res://Tres/SIXTY.TTF" id="9_6m11r"]
 [ext_resource type="PackedScene" uid="uid://dmsg1w56u4ygr" path="res://Cenas/pause_menu.tscn" id="10_rw0mj"]
+[ext_resource type="PackedScene" uid="uid://b74qyp7yb5on8" path="res://Cenas/terreno_roxo.tscn" id="11_mhtul"]
+[ext_resource type="PackedScene" uid="uid://ekri50jkelwb" path="res://Models/assets/bandeira.glb" id="12_jg7mo"]
+[ext_resource type="Script" path="res://Scripts/cai_morre.gd" id="13_eve1m"]
+[ext_resource type="Script" path="res://Scripts/chega_ganha.gd" id="14_te3vn"]
+[ext_resource type="PackedScene" uid="uid://bpymta3kh8qnc" path="res://Cenas/coin.tscn" id="15_joxwn"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xcsh1"]
 panorama = ExtResource("2_kg77h")
@@ -40,6 +45,12 @@ Button/styles/hover = SubResource("StyleBoxEmpty_237p0")
 Button/styles/normal = SubResource("StyleBoxEmpty_7n1jc")
 Button/styles/pressed = SubResource("StyleBoxEmpty_xy7vb")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jlxm"]
+size = Vector3(105.319, 1, 361.088)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_twjso"]
+size = Vector3(6.97582, 6.94287, 1.44678)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera_pivot" type="Node3D" parent="." node_paths=PackedStringArray("target")]
@@ -57,7 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225515, 11.252, -0.336922)
 shadow_enabled = true
 
 [node name="player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("view")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341057, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366152, 3.78042, 1.09834)
 script = ExtResource("3_rv6rq")
 view = NodePath("../Camera_pivot")
 
@@ -73,6 +84,336 @@ shape = SubResource("CapsuleShape3D_35d5y")
 transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 0.380754, 0, 0.22609)
 
 [node name="buttonRound2" parent="Pasta_Terrenos/terreno_1" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_2" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 5.00163, 0, -7.09746)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_2" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_8" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -3.75531, 0, -7.09746)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_8" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_3" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 10.1796, 0, -14.4572)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_3" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_9" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -9.21432, 0, -14.4572)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_9" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_4" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 14.7026, 0, -22.1072)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_4" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_10" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -14.4628, 0, -22.1072)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_10" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_11" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -14.4628, 0, -30.7443)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_11" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_5" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 14.7026, 0, -30.6785)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_5" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_6" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 9.71393, 0, -37.9923)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_6" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_12" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -9.35909, 0, -37.9923)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_12" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_7" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 4.8632, 0, -45.8849)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_7" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_14" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -0.35906, 0, -54.2146)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_14" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_15" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -0.35906, 2.26675, -62.1815)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_15" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_16" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -0.35906, 4.32459, -69.6315)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_16" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_17" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -0.35906, 6.87897, -76.6381)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_17" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_18" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -6.56716, 6.87897, -84.0665)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_18" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_19" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -6.56716, 6.87897, -91.7888)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_19" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_20" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -11.0324, 6.87897, -100.119)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_20" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_21" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -2.06199, 6.87897, -100.119)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_21" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_22" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -6.75381, 8.63885, -108.249)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_22" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_23" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -2.62697, 11.031, -115.672)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_23" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_24" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 2.20994, 12.9352, -122.761)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_24" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_25" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -2.3727, 14.3942, -129.75)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_25" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_26" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -7.32892, 14.3942, -137.91)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_26" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_27" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -12.8611, 14.3942, -146.264)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_27" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_28" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -17.7025, 14.3942, -154.734)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_28" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_29" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -22.5818, 14.3942, -163.468)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_29" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_50" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -12.6923, 14.3942, -163.468)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_50" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_30" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -22.5818, 14.3942, -172.638)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_30" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_51" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -12.6326, 14.3942, -172.638)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_51" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_31" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -18.1594, 14.3942, -181.354)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_31" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_32" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -18.1594, 14.3942, -190.711)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_32" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_33" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -23.1299, 14.3942, -198.843)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_33" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_52" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -13.2465, 14.3942, -198.843)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_52" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_34" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -18.3967, 14.3942, -207.224)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_34" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_35" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -12.2179, 14.3942, -214.049)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_35" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_36" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -7.50035, 14.3942, -222.386)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_36" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_37" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -1.63814, 16.9403, -229.263)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_37" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_43" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -12.3389, 16.9403, -229.263)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_43" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_44" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -12.3389, 16.9403, -237.945)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_44" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_38" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -1.63814, 18.2915, -237.638)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_38" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_39" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -1.63814, 19.6247, -246.336)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_39" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_45" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -10.8827, 19.6247, -246.336)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_45" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_40" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 2.72094, 19.6247, -254.992)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_40" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_46" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -7.02945, 19.6247, -254.992)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_46" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_41" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 7.22086, 21.5055, -263.168)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_41" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_47" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -1.69338, 21.5055, -263.168)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_47" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_42" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 11.8759, 21.5055, -271.987)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_42" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_48" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 2.56583, 21.5055, -271.987)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_48" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_49" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 7.21729, 21.5055, -280.882)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_49" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_53" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 7.21729, 21.5055, -289.762)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_53" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_54" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 7.21729, 23.564, -298.047)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_54" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_55" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 7.21729, 23.564, -306.563)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_55" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_56" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, 7.21729, 25.2705, -314.404)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_56" instance=ExtResource("6_lypgu")]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
+
+[node name="terreno_13" parent="Pasta_Terrenos" instance=ExtResource("5_d4tsq")]
+transform = Transform3D(0.00876145, 0, 0.999962, 0, 1, 0, -0.999962, 0, 0.00876145, -4.7641, 0, -45.8849)
+
+[node name="buttonRound2" parent="Pasta_Terrenos/terreno_13" instance=ExtResource("6_lypgu")]
 transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 2.03023, 1.28131, 0.0451103)
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -171,5 +512,264 @@ text = "11"
 
 [node name="pause_menu" parent="." instance=ExtResource("10_rw0mj")]
 
+[node name="terreno_roxo2" parent="." instance=ExtResource("11_mhtul")]
+transform = Transform3D(-0.00392703, 0, 0.999992, 0, 1, 0, -0.999992, 0, -0.00392703, 7.46717, 25.4939, -322.703)
+
+[node name="bandeira" parent="terreno_roxo2" instance=ExtResource("12_jg7mo")]
+transform = Transform3D(0.0655076, 0, -0.997852, 0, 1, 0, 0.997852, 0, 0.0655076, 2.06491, 1.28131, -1.05973)
+
+[node name="bandeira2" parent="terreno_roxo2" instance=ExtResource("12_jg7mo")]
+transform = Transform3D(0.0655075, 0, -0.997852, 0, 1, 0, 0.997852, 0, 0.0655075, 2.05521, 1.28131, 1.41018)
+
+[node name="cai_morre" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09418, 0, 0)
+script = ExtResource("13_eve1m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cai_morre"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6513, -22.3846, -155.152)
+shape = SubResource("BoxShape3D_3jlxm")
+
+[node name="chega_ganha" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.38721, 0, -201.653)
+script = ExtResource("14_te3vn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="chega_ganha"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1081, 30.559, -122.524)
+shape = SubResource("BoxShape3D_twjso")
+
+[node name="Pasta_Moedas" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.62397, 24.2257, -255.194)
+
+[node name="Pasta_T_2" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62397, -23.1184, 255.194)
+
+[node name="coin_11" parent="Pasta_Moedas/Pasta_T_2" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175828, 7.08165, -62.2994)
+
+[node name="Pasta_T_1" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62397, -25.5658, 255.194)
+
+[node name="coin_1" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53582, 1.96107, -1.91151)
+
+[node name="coin_2" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99369, 1.96107, -7.70237)
+
+[node name="coin_3" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.06193, 1.96107, -7.70237)
+
+[node name="coin_4" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.94284, 1.96107, -15.2499)
+
+[node name="coin_5" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.094, 1.96107, -22.4362)
+
+[node name="coin_6" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.094, 1.96107, -30.8553)
+
+[node name="coin_7" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1735, 1.96107, -31.6268)
+
+[node name="coin_8" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.15486, 1.96107, -38.4843)
+
+[node name="coin_9" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.74738, 1.96107, -46.4922)
+
+[node name="coin_10" parent="Pasta_Moedas/Pasta_T_1" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.175828, 1.96107, -54.7331)
+
+[node name="Pasta_T_3" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62397, -21.3543, 255.194)
+
+[node name="coin_12" parent="Pasta_Moedas/Pasta_T_3" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.248914, 6.55648, -70.298)
+
+[node name="Pasta_T_4" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.91335, -18.7299, 154.2)
+
+[node name="coin_13" parent="Pasta_Moedas/Pasta_T_4" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04047, 0, 23.6616)
+
+[node name="coin_14" parent="Pasta_Moedas/Pasta_T_4" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.20513, 0, 15.8708)
+
+[node name="coin_15" parent="Pasta_Moedas/Pasta_T_4" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.27899, 0, 8.07676)
+
+[node name="coin_16" parent="Pasta_Moedas/Pasta_T_4" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Pasta_T_5" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41542, -16.8791, 145.799)
+
+[node name="coin_17" parent="Pasta_Moedas/Pasta_T_5" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Pasta_T_7" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62397, -12.4992, 255.194)
+
+[node name="coin_19" parent="Pasta_Moedas/Pasta_T_7" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51411, 8.87461, -124.118)
+
+[node name="Pasta_T_6" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62397, -14.6926, 255.194)
+
+[node name="coin_18" parent="Pasta_Moedas/Pasta_T_6" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37422, -0.283822, -116.383)
+
+[node name="Pasta_T_8" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04434, -11.2865, 31.3312)
+
+[node name="coin_20" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07379, 0, 92.5027)
+
+[node name="coin_21" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190502, 0, 84.7614)
+
+[node name="coin_22" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.41415, 0, 76.4264)
+
+[node name="coin_23" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.251, 0, 67.8921)
+
+[node name="coin_24" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0039, 0, 59.0852)
+
+[node name="coin_25" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.117, 0, 49.821)
+
+[node name="coin_26" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6946, 0, 41.3547)
+
+[node name="coin_27" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6946, 0, 31.8217)
+
+[node name="coin_28" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.85376, 0, 24.0088)
+
+[node name="coin_29" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9833, 0, 15.3103)
+
+[node name="coin_30" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.10263, 0, 8.5302)
+
+[node name="coin_31" parent="Pasta_Moedas/Pasta_T_8" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Pasta_T_12" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0361, -4.24887, 42.765)
+
+[node name="coin_40" parent="Pasta_Moedas/Pasta_T_12" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7015, 5.10345, -51.7472)
+
+[node name="coin_41" parent="Pasta_Moedas/Pasta_T_12" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1018, 5.10345, -60.7574)
+
+[node name="coin_42" parent="Pasta_Moedas/Pasta_T_12" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7818, 5.10345, -69.6872)
+
+[node name="coin_43" parent="Pasta_Moedas/Pasta_T_12" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7818, 5.10345, -78.7661)
+
+[node name="Pasta_T_11" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0361, -5.95517, 42.765)
+
+[node name="coin_36" parent="Pasta_Moedas/Pasta_T_11" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5749, 4.57357, -34.9925)
+
+[node name="coin_37" parent="Pasta_Moedas/Pasta_T_11" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7396, 4.57357, -35.2529)
+
+[node name="coin_38" parent="Pasta_Moedas/Pasta_T_11" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0885, 4.80268, -43.886)
+
+[node name="coin_39" parent="Pasta_Moedas/Pasta_T_11" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.32316, 4.80268, -43.886)
+
+[node name="Pasta_T_10" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0361, -7.41861, 42.765)
+
+[node name="coin_34" parent="Pasta_Moedas/Pasta_T_10" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2791, 4.79869, -26.0923)
+
+[node name="Pasta_T_14" type="Node3D" parent="Pasta_Moedas"]
+
+[node name="coin_46" parent="Pasta_Moedas/Pasta_T_14" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63223, 4.7578, -60.3886)
+
+[node name="coin_47" parent="Pasta_Moedas/Pasta_T_14" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63223, 4.7578, -67.5671)
+
+[node name="Pasta_T_13" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.80127, 0)
+
+[node name="coin_44" parent="Pasta_Moedas/Pasta_T_13" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7457, 2.74168, -44.0872)
+
+[node name="coin_45" parent="Pasta_Moedas/Pasta_T_13" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.63223, 2.74168, -53.0405)
+
+[node name="Pasta_T_9" type="Node3D" parent="Pasta_Moedas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0361, -8.73877, 41.9457)
+
+[node name="coin_32" parent="Pasta_Moedas/Pasta_T_9" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105546, 2.69711, -17.3299)
+
+[node name="coin_33" parent="Pasta_Moedas/Pasta_T_9" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2791, 2.69711, -17.3299)
+
+[node name="coin_35" parent="Pasta_Moedas/Pasta_T_9" instance=ExtResource("15_joxwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235307, 2.77768, -26.0831)
+
 [connection signal="timeout" from="HUD/Control/Timer" to="HUD/Control" method="_on_timer_timeout"]
 [connection signal="pressed" from="HUD/Control/container/pause_container/pause_btn" to="pause_menu" method="_on_pause_btn_pressed"]
+[connection signal="body_entered" from="cai_morre" to="cai_morre" method="_on_body_entered"]
+[connection signal="body_entered" from="chega_ganha" to="chega_ganha" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_2/coin_11" to="Pasta_Moedas/Pasta_T_2/coin_11" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_1" to="Pasta_Moedas/Pasta_T_1/coin_1" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_2" to="Pasta_Moedas/Pasta_T_1/coin_2" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_3" to="Pasta_Moedas/Pasta_T_1/coin_3" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_4" to="Pasta_Moedas/Pasta_T_1/coin_4" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_5" to="Pasta_Moedas/Pasta_T_1/coin_5" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_6" to="Pasta_Moedas/Pasta_T_1/coin_6" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_7" to="Pasta_Moedas/Pasta_T_1/coin_7" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_8" to="Pasta_Moedas/Pasta_T_1/coin_8" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_9" to="Pasta_Moedas/Pasta_T_1/coin_9" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_1/coin_10" to="Pasta_Moedas/Pasta_T_1/coin_10" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_3/coin_12" to="Pasta_Moedas/Pasta_T_3/coin_12" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_4/coin_13" to="Pasta_Moedas/Pasta_T_4/coin_13" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_4/coin_14" to="Pasta_Moedas/Pasta_T_4/coin_14" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_4/coin_15" to="Pasta_Moedas/Pasta_T_4/coin_15" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_4/coin_16" to="Pasta_Moedas/Pasta_T_4/coin_16" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_5/coin_17" to="Pasta_Moedas/Pasta_T_5/coin_17" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_7/coin_19" to="Pasta_Moedas/Pasta_T_7/coin_19" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_6/coin_18" to="Pasta_Moedas/Pasta_T_6/coin_18" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_20" to="Pasta_Moedas/Pasta_T_8/coin_20" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_21" to="Pasta_Moedas/Pasta_T_8/coin_21" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_22" to="Pasta_Moedas/Pasta_T_8/coin_22" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_23" to="Pasta_Moedas/Pasta_T_8/coin_23" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_24" to="Pasta_Moedas/Pasta_T_8/coin_24" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_25" to="Pasta_Moedas/Pasta_T_8/coin_25" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_26" to="Pasta_Moedas/Pasta_T_8/coin_26" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_27" to="Pasta_Moedas/Pasta_T_8/coin_27" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_28" to="Pasta_Moedas/Pasta_T_8/coin_28" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_29" to="Pasta_Moedas/Pasta_T_8/coin_29" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_30" to="Pasta_Moedas/Pasta_T_8/coin_30" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_8/coin_31" to="Pasta_Moedas/Pasta_T_8/coin_31" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_12/coin_40" to="Pasta_Moedas/Pasta_T_12/coin_40" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_12/coin_41" to="Pasta_Moedas/Pasta_T_12/coin_41" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_12/coin_42" to="Pasta_Moedas/Pasta_T_12/coin_42" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_12/coin_43" to="Pasta_Moedas/Pasta_T_12/coin_43" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_11/coin_36" to="Pasta_Moedas/Pasta_T_11/coin_36" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_11/coin_37" to="Pasta_Moedas/Pasta_T_11/coin_37" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_11/coin_38" to="Pasta_Moedas/Pasta_T_11/coin_38" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_11/coin_39" to="Pasta_Moedas/Pasta_T_11/coin_39" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_10/coin_34" to="Pasta_Moedas/Pasta_T_10/coin_34" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_14/coin_46" to="Pasta_Moedas/Pasta_T_14/coin_46" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_14/coin_47" to="Pasta_Moedas/Pasta_T_14/coin_47" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_13/coin_44" to="Pasta_Moedas/Pasta_T_13/coin_44" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_13/coin_45" to="Pasta_Moedas/Pasta_T_13/coin_45" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_9/coin_32" to="Pasta_Moedas/Pasta_T_9/coin_32" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_9/coin_33" to="Pasta_Moedas/Pasta_T_9/coin_33" method="_on_body_entered"]
+[connection signal="body_entered" from="Pasta_Moedas/Pasta_T_9/coin_35" to="Pasta_Moedas/Pasta_T_9/coin_35" method="_on_body_entered"]
