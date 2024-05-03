@@ -8,6 +8,7 @@ var dentro = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.rotation_arrow = 0
 	arrow_2.visible = false
 
 
@@ -16,8 +17,10 @@ func _process(delta):
 	if dentro: 
 		if Input.is_action_pressed("arrow_left"):
 			rotateArrowLeft()
+			#print(Globals.rotation_arrow)
 		elif Input.is_action_pressed("arrow_rigth"):
-			rotateArrowRight()	
+			rotateArrowRight()
+			#print(Globals.rotation_arrow)
 
 # Função para rotacionar a seta em direção à esquerda
 func rotateArrowLeft():

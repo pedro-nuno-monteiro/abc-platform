@@ -43,7 +43,7 @@ func handle_input(delta):
 		var input := Vector3.ZERO
 		input.x = Input.get_axis("move_left", "move_rigth")
 		input.z = Input.get_axis("move_forward", "move_backward")
-		
+
 		input = input.rotated(Vector3.UP, view.rotation.y).normalized()
 		
 		velocity = input * SPEED * delta
@@ -64,14 +64,15 @@ func handle_animations():
 func apply_gravity(delta):
 	if not is_on_floor(): 
 		gravity += 25 * delta
+	
 		
-		
-func jump(_delta):
+func jump(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		#var jump_direction = Vector3(sin(Globals.rotation_arrow), 0, sin(Globals.rotation_arrow)).normalized()
+		# var jump_direction = Vector3(sin(Globals.rotation_arrow), 0, sin(Globals.rotation_arrow)).normalized()
+
 		gravity = -JUMP_VELOCITY
-		aux = movement_velocity 
 		#movement_velocity += jump_direction * JUMP_VELOCITY
 		
 	if gravity>0 and is_on_floor():
 		gravity=0
+
