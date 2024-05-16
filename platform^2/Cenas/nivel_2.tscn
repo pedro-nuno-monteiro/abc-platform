@@ -381,6 +381,7 @@ text = "11"
 [node name="pause_menu" parent="." instance=ExtResource("14_finh7")]
 
 [node name="Pasta_Setas" type="Node3D" parent="."]
+visible = false
 
 [node name="chega_aparece_seta_1" type="Area3D" parent="Pasta_Setas"]
 script = ExtResource("15_mvfgi")

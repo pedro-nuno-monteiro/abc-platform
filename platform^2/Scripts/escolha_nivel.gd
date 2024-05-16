@@ -31,13 +31,3 @@ func _on_level_4_btn_pressed():
 	Globals.nivel = 4
 	get_tree().change_scene_to_file("res://Cenas/nivel_4.tscn")
 
-func _on_level_5_btn_pressed():
-	pass # Replace with function body.
-
-
-func _on_level_6_btn_pressed():
-	pass # Replace with function body.
-
-
-func _on_random_btn_pressed():
-	pass # Replace with function body.

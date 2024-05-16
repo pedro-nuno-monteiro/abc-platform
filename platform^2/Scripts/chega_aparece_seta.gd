@@ -25,12 +25,24 @@ func _process(delta):
 # Função para rotacionar a seta em direção à esquerda
 func rotateArrowLeft():
 	arrow_2.rotation_degrees.y += arrow_rotation_speed
+	
+	arrow_2.rotation_degrees.y = round(arrow_2.rotation_degrees.y)
+	
+	
+	#var arrow_direction = Vector3(cos(arrow_2.rotation_degrees.y), -1, sin(arrow_2.rotation_degrees.y)).normalized()
 	Globals.rotation_arrow = arrow_2.rotation_degrees.y
+	#Globals.rotation_arrow = arrow_direction
 
 # Função para rotacionar a seta em direção à direita
 func rotateArrowRight():
 	arrow_2.rotation_degrees.y -= arrow_rotation_speed
+	
+	arrow_2.rotation_degrees.y = round(arrow_2.rotation_degrees.y)
+	
+	#var arrow_direction = Vector3(cos(-arrow_2.rotation_degrees.y), -1, sin(-arrow_2.rotation_degrees.y)).normalized()
+	
 	Globals.rotation_arrow = arrow_2.rotation_degrees.y
+	#Globals.rotation_arrow = arrow_direction
 
 
 func _on_body_entered(body):

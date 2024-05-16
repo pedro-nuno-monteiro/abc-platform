@@ -6,7 +6,7 @@ const JUMP_VELOCITY = 12.0
 @onready var animator = get_node("gobot/AnimationPlayer") as AnimationPlayer
 var gravity = 0
 var aux
-
+var air_time = 0
 
 @export var view : Node3D
 var movement_velocity : Vector3
@@ -33,6 +33,9 @@ func _physics_process(delta):
 	
 	if Globals.paused == false:
 		move_and_slide()
+		
+
+	
 	
 	if Vector2(velocity.z, velocity.x).length() > 0:
 		rotation_direction = Vector2(velocity.z, velocity.x).angle()
@@ -68,11 +71,8 @@ func apply_gravity(delta):
 		
 func jump(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		# var jump_direction = Vector3(sin(Globals.rotation_arrow), 0, sin(Globals.rotation_arrow)).normalized()
-
 		gravity = -JUMP_VELOCITY
-		#movement_velocity += jump_direction * JUMP_VELOCITY
-		
+
 	if gravity>0 and is_on_floor():
 		gravity=0
 

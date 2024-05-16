@@ -465,6 +465,7 @@ text = "11"
 
 [node name="Pasta_Setas" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.377699, 3.8147e-06, -0.0736198)
+visible = false
 
 [node name="chega_aparece_seta_1" type="Area3D" parent="Pasta_Setas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.776751, 3.8147e-06, 0.494953)
